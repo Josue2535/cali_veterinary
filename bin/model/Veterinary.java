@@ -35,4 +35,19 @@ public class Veterinary{
 	public ArrayList<Client> getClient(){
 		return client;
 	}
+	//metodos
+	//Agregar cliente y mascota
+	public void addClient(String name, int id, String address , int phoneNumber, String nameM, String type, int age, double weight){
+		Client customer = new Client(name, id, address, phoneNumber);
+		client.add(customer);
+		int u = 0;
+		for(int i = 0; i < client.size(); i++){
+			if(name == client.get(i).getName()){
+				client.get(i).addPet(nameM, type, age, weight);
+			}
+		}
+	}
+
+ 
 }
+

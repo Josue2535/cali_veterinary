@@ -9,6 +9,10 @@ public class Client{
 	private String address;
 	private int phoneNumber;
 	
+	public final static String GATO = "Gato";
+	public final static String PERRO = "Perro";
+	public final static String AVE = "Ave";
+	
 	//Relaciones
 	private ArrayList<Pet> pets;
 	
@@ -51,6 +55,9 @@ public class Client{
 		return pets;
 	}
 	// metodos 
-	
+	public void addPet(String nameM, String type, int age, double weight){
+		Pet pet = new Pet(nameM, type, age, weight);
+		pets.add(pet);
+	}
 	
 }
