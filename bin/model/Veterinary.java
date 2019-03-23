@@ -64,9 +64,18 @@ public class Veterinary{
 		return menssage;
 	}
 	//---------------------------Crear la historia de una mascota------------------------------------------------------------------
-	public String createHistoryPet(int id, String nameM, String symptom, String diagnostic){
+	public String createHistoryPet(int id, String nameM, String symptom, String diagnostic, boolean state, int day, int month, int year){
 		String menssage = "";
-		
+		ClinicHistory hist = new ClinicHistory(state, symptom, diagnostic);
+		Client client1 = null;
+		for(int i = 0; i<client.size();i++){
+			if(client.get(i).getId()==id){
+				for(int u = 0; u<client.get(i).pet.size(); u++)
+				if(nameM.equals(client.get(i).pet.get(u).getName())){
+					client.get(i).pet.get(u).addHistory(history).dateAdd(day, month, year);
+				}
+			}
+		}
 		return menssage;
 	}
  

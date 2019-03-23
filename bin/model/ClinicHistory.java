@@ -12,7 +12,7 @@ public class ClinicHistory{
 	private ArrayList<Date> dateHospitalization;
 	private ArrayList<Date> dateExit;
 	//constructosr
-	public ClinicHistory(String theDateHospitalization, boolean theState, String theSymptom, String theDiagnostic){
+	public ClinicHistory(boolean theState, String theSymptom, String theDiagnostic){
 		
 		state = theState;
 		symptom = theSymptom;
@@ -55,7 +55,7 @@ public class ClinicHistory{
 	}
 	//Metodos
 	//-------------------------Añadir fecha de ingreso----------------------------------------------------------
-	public void addDate(int day, int month, int year){
+	public void dateAdd(int day, int month, int year){
 		Date date = new Date(day, month, year);
 		dateHospitalization.add(date);
 	}
