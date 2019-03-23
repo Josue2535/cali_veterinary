@@ -4,22 +4,22 @@ import java.util.ArrayList;
 public class Veterinary{
 	// Atributos
 	
-	public final static int HOS = 1;
 	public final static int ROOMS_MAX = 8;
 	private String name;
 	
+	private Room[] rooms;
 	private ArrayList<ClinicHistory> history;
 	private ArrayList<Client> client;
-	private Room[] rooms;
 	
 	
 	//constructor
 	
 	public Veterinary(String theName){
 		name = theName;
+		rooms = new Room[ROOMS_MAX];
 		history = new ArrayList<>();
 		client = new ArrayList<>();
-		rooms = new Room[ROOMS_MAX];
+		
 	}
 	//gets y sets
 	public String getName(){
@@ -28,46 +28,47 @@ public class Veterinary{
 	public void setName(String name){
 		this.name = name;
 	}
+	public Room[] getRooms(){
+		return rooms;
+	}
+	public void setRooms(Room[] rooms){
+		this.rooms = rooms;
+	}
 	public ArrayList<ClinicHistory> getHistory(){
 		return history;
 	}
 	public ArrayList<Client> getClient(){
 		return client;
 	}
-	public 
 	//metodos
-	//Agregar cliente y mascota
+	//------------------------Agregar cliente y mascota--------------------------------------------------------
 	public void addClient(String name, int id, String address , int phoneNumber, String nameM, String type, int age, double weight){
 		Client customer = new Client(name, id, address, phoneNumber);
 		client.add(customer);
 		int u = 0;
 		for(int i = 0; i < client.size(); i++){
-			if(name == client.get(i).getName()){
+			if(name.equals(client.get(i).getName())){
 				client.get(i).addPet(nameM, type, age, weight);
 			}
 		}
 	}
-	public String assignPet(Pet pet){
+	//-------------------------------------Ver si hay disponibilidad en los cuartos----------------------------------------------------------------------
+	public String availabilityOfTheRoom(int room){
 		String menssage = "";
-		boolean bol = false;
-		for(int i = 0; i < ROOMS_MAX && bol == false; i++){
-			if(rooms[i] != null){
-				rooms[i].setPet(pet);
-				menssage = "La mascota ha sido agregada";
-				bol = true;
-			}
+		if(rooms[room].getPet() != null){
+			menssage = "Sin disponibilidad";
 		}
-		if(bol == false){
-			menssage = "No se pudo agregar la mascota";
+		else{
+			menssage = "Disponible";
 		}
 		return menssage;
 	}
-	public boolean stateHistory(){
-		boolean lu = false;
+	//---------------------------Crear la historia de una mascota------------------------------------------------------------------
+	public String createHistoryPet(int id, String nameM, String symptom, String diagnostic){
+		String menssage = "";
 		
-		return lu;
-	}	
-
+		return menssage;
+	}
  
 }
 

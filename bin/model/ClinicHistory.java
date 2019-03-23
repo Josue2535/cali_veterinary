@@ -3,30 +3,26 @@ import java.util.ArrayList;
 
 public class ClinicHistory{
 	//Atributos
-	private String dateHospitalization;
 	private boolean state;
 	private String symptom;
 	private String diagnostic;
 	
 	private ArrayList<Client> human;
 	private ArrayList<Medicine> medicine;
-	
+	private ArrayList<Date> dateHospitalization;
+	private ArrayList<Date> dateExit;
 	//constructosr
 	public ClinicHistory(String theDateHospitalization, boolean theState, String theSymptom, String theDiagnostic){
-		dateHospitalization = theDateHospitalization;
+		
 		state = theState;
 		symptom = theSymptom;
 		diagnostic = theDiagnostic;
 		human = new ArrayList<>();
 		medicine = new ArrayList<>();
+		dateHospitalization = new ArrayList<>();
+		dateExit = new ArrayList<>();
 	}
 	//gets y sets
-	public String getDateHospitalization(){
-		return dateHospitalization;
-	}
-	public void setDateHospitalization(String dateHospitalization){
-		this.dateHospitalization = dateHospitalization;
-	}
 	public boolean getState(){
 		return state;
 	}
@@ -50,5 +46,22 @@ public class ClinicHistory{
 	}
 	public ArrayList<Medicine> getMedicine(){
 		return medicine;
+	}
+	public ArrayList<Date> getDateHospitalization(){
+		return dateHospitalization;
+	}
+	public ArrayList<Date> getDateExit(){
+		return dateExit;
+	}
+	//Metodos
+	//-------------------------Añadir fecha de ingreso----------------------------------------------------------
+	public void addDate(int day, int month, int year){
+		Date date = new Date(day, month, year);
+		dateHospitalization.add(date);
+	}
+	//------------------------Añir fecha de salida---------------------------------------------------------------
+	public void addDateExit(int day, int month, int year){
+		Date date = new Date(day, month, year);
+		dateExit.add(date);
 	}
 }
