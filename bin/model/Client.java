@@ -14,7 +14,7 @@ public class Client{
 	public final static String AVE = "Ave";
 	
 	//Relaciones
-	private ArrayList<Pet> pets;
+	public ArrayList<Pet> pets;
 	
 	public Client(String theName, int theId, String theAddress, int thePhoneNumber){
 		name = theName;

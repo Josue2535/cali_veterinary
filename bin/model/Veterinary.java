@@ -9,7 +9,7 @@ public class Veterinary{
 	
 	private Room[] rooms;
 	private ArrayList<ClinicHistory> history;
-	private ArrayList<Client> client;
+	private ArrayList<Client> clients;
 	
 	
 	//constructor
@@ -18,7 +18,7 @@ public class Veterinary{
 		name = theName;
 		rooms = new Room[ROOMS_MAX];
 		history = new ArrayList<>();
-		client = new ArrayList<>();
+		clients = new ArrayList<>();
 		
 	}
 	//gets y sets
@@ -37,18 +37,18 @@ public class Veterinary{
 	public ArrayList<ClinicHistory> getHistory(){
 		return history;
 	}
-	public ArrayList<Client> getClient(){
-		return client;
+	public ArrayList<Client> getClients(){
+		return clients;
 	}
 	//metodos
 	//------------------------Agregar cliente y mascota--------------------------------------------------------
 	public void addClient(String name, int id, String address , int phoneNumber, String nameM, String type, int age, double weight){
 		Client customer = new Client(name, id, address, phoneNumber);
-		client.add(customer);
+		clients.add(customer);
 		int u = 0;
-		for(int i = 0; i < client.size(); i++){
-			if(name.equals(client.get(i).getName())){
-				client.get(i).addPet(nameM, type, age, weight);
+		for(int i = 0; i < clients.size(); i++){
+			if(name.equals(clients.get(i).getName())){
+				clients.get(i).addPet(nameM, type, age, weight);
 			}
 		}
 	}
@@ -67,12 +67,13 @@ public class Veterinary{
 	public String createHistoryPet(int id, String nameM, String symptom, String diagnostic, boolean state, int day, int month, int year){
 		String menssage = "";
 		ClinicHistory hist = new ClinicHistory(state, symptom, diagnostic);
-		Client client1 = null;
-		for(int i = 0; i<client.size();i++){
-			if(client.get(i).getId()==id){
-				for(int u = 0; u<client.get(i).pet.size(); u++)
-				if(nameM.equals(client.get(i).pet.get(u).getName())){
-					client.get(i).pet.get(u).addHistory(history).dateAdd(day, month, year);
+		for(int i = 0; i<clients.size();i++){
+			if(clients.get(i).getId()==id){
+				for(int u = 0; u<clients.get(i).pets.size(); u++)
+				if(nameM.equals(clients.get(i).pets.get(u).getName())){
+					clients.get(i).pets.get(u).historys.add(hist);
+					clients.get(i).pets.get(u).historys.get(0).dateAdd(day, month, year);
+					menssage = "Se ha creado la historia clinica";
 				}
 			}
 		}

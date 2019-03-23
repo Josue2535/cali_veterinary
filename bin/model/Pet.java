@@ -8,14 +8,14 @@ public class Pet{
 	private int age;
 	private double weight;
 	
-	private ArrayList<ClinicHistory> history;
+	public ArrayList<ClinicHistory> historys;
 	
 	//Costructor
 	public Pet(String theName, String theTypePet, int theAge, double theWeight){
 	name = theName;
 	typePet = theTypePet;
 	age = theAge;
-	history = new ArrayList<>();
+	historys = new ArrayList<>();
 	weight = theWeight;
 	}
 	
@@ -46,8 +46,8 @@ public class Pet{
 	public void setWeigth(double weight){
 		this.weight = weight;
 	}
-	public ArrayList<ClinicHistory> getHistory(){
-		return history;
+	public ArrayList<ClinicHistory> getHistorys(){
+		return historys;
 	}
 	// metodos
 	
