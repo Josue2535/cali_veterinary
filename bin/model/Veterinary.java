@@ -141,6 +141,8 @@ public class Veterinary{
 								double weight = clients.get(i).positionOfThePet(u).getWeight();
 								Pet pet = new Pet(name, type, age, weight);
 								rooms[k].setPet(pet);
+							}else{
+								menssage = "there are no rooms available.";
 							}
 						
 						}
@@ -154,7 +156,7 @@ public class Veterinary{
 		}
 		return menssage;
 	}
-	//---------------------------------------------------------------clients.size()------------------------------------------------------
+	//---------------------------------------------------------------clients.size()&&pets.size()------------------------------------------------------
 	public int clientSize(){
 		return clients.size();
 	}

@@ -126,8 +126,20 @@ public class Main{
 				if(veterinary.foundClient(id, i) != false){
 					for(int k = 0; k<veterinary.petSize(i);k++){
 						if(veterinary.foundPet(i, k, nameM)!= false){
+							boolean state = true;
 							System.out.println("What symptoms does the pet have?");
 							String symptom = reader.nextLine();
+							System.out.println("What is the possible diagnosis of the pet?");
+							String diagnostic = reader.nextLine();
+							System.out.println("enter the current day");
+							int day = reader.nextInt();
+							System.out.println("enter the current month (please the number)");
+							int month = reader.nextInt();
+							System.out.println("enter the current year");
+							int year = reader.nextInt();
+							System.out.println(veterinary.hospitalizePet(id, nameM));
+							
+							System.out.println(veterinary.createHistoryPet(id, nameM, symptom,diagnostic, state, day, month, year));
 							
 							int option = reader.nextInt();
 							error = 1;
@@ -226,13 +238,13 @@ public void showOptions(){
 
 
 }
-/**
+
 public void init(){
+}
 
 
 
-
-//	public HumanClient(String name,String iD,String address,String telePhone){
+/**	public HumanClient(String name,String iD,String address,String telePhone){
 
 HumanClient client1 = new HumanClient("Andres","122","Cra 33a #29-56","3237985");
 HumanClient client2 = new HumanClient("Richard","123","Cra 33a #29-47","3213211");
