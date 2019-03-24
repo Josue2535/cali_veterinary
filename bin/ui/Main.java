@@ -223,17 +223,17 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("2.Hospitalize the pet.\n");
   System.out.println("                                                                          |");
-  System.out.println("3. ");
+  System.out.println("3. Dar de alta ");
   System.out.println("                                                                          |");
-  System.out.println("4. ");
+  System.out.println("4. Conocer los ingresos de la veterinaria");
   System.out.println("                                                                          |");
-  System.out.println("5. ");
+  System.out.println("5. Anexar una historia clinica");
   System.out.println("                                                                          |");
-  System.out.println("6. ");
+  System.out.println("6. Numero del cuarto de la mascota hospitalizada");
   System.out.println("                                                                          |");
-  System.out.println("7. ");
+  System.out.println("7. Ver historia clinica");
   System.out.println("                                                                          |");
-  System.out.println("8. ");
+  System.out.println("8. Ingresos por hospitalizacion");
   System.out.println("---------------------------------------------------------------------------");
 
 
