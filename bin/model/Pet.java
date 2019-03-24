@@ -40,7 +40,7 @@ public class Pet{
 		this.age = age;
 	}
 	
-	public double getWeigth(){
+	public double getWeight(){
 		return weight;
 	}
 	public void setWeigth(double weight){

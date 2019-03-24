@@ -47,37 +47,120 @@ public class Veterinary{
 		clients.add(customer);
 		int u = 0;
 		for(int i = 0; i < clients.size(); i++){
-			if(name.equals(clients.get(i).getName())){
+			if(foundClient(id, i) != false){
 				clients.get(i).addPet(nameM, type, age, weight);
 			}
 		}
 	}
+	
+	
+	
+	//------------------------------------buscar cliente---------------------------------------------------------------------------------------
+	public boolean foundClient(int id, int i){
+		boolean foundClient = false;
+		
+		if(id == clients.get(i).getId()){
+			foundClient = true;
+		}
+		return foundClient;
+	}
+	
+	
+	
+	
+	//-----------------------------------buscar mascota---------------------------------------------------------------------------------------------
+	public boolean foundPet(int i,int k, String name){
+		boolean foundPet = false;
+		if(name.equals(clients.get(i).pets.get(k).getName())){
+			foundPet = true;
+		}
+		return foundPet;
+	}
+	
+	
+	
+	
+	
 	//-------------------------------------Ver si hay disponibilidad en los cuartos----------------------------------------------------------------------
-	public String availabilityOfTheRoom(int room){
-		String menssage = "";
+	public boolean availabilityOfTheRoom(int room){
+		boolean menssage = false;
 		if(rooms[room].getPet() != null){
-			menssage = "Sin disponibilidad";
+			menssage = false;
 		}
 		else{
-			menssage = "Disponible";
+			menssage = true;
 		}
 		return menssage;
 	}
+	
+	
+	
+	
 	//---------------------------Crear la historia de una mascota------------------------------------------------------------------
 	public String createHistoryPet(int id, String nameM, String symptom, String diagnostic, boolean state, int day, int month, int year){
 		String menssage = "";
 		ClinicHistory hist = new ClinicHistory(state, symptom, diagnostic);
-		for(int i = 0; i<clients.size();i++){
+		for(int i = 0; i<clientSize();i++){
 			if(clients.get(i).getId()==id){
-				for(int u = 0; u<clients.get(i).pets.size(); u++)
-				if(nameM.equals(clients.get(i).pets.get(u).getName())){
+				int k = i;
+				for(int u = 0; u<petSize(i); u++){
+					int w = u;
+				if(foundPet(k , w, nameM)!= false){
 					clients.get(i).pets.get(u).historys.add(hist);
 					clients.get(i).pets.get(u).historys.get(0).dateAdd(day, month, year);
-					menssage = "Se ha creado la historia clinica";
+					menssage = "The clinical history has been created";
+				}else{
+					menssage = "Unable to create the clinical history";
 				}
+				}
+			}else{
+				menssage = "Unable to create the clinical history";
 			}
 		}
 		return menssage;
+	}
+	
+	
+	
+	
+	
+	//-------------hospitalizar mascota------------------------------------------------------------------------------------------------
+	public String hospitalizePet(int id,String nameM){
+		String menssage = "";
+		
+		
+		for(int i = 0; i<clients.size(); i++){
+			if(foundClient(id, i) != false){
+				for(int u = 0; u<petSize(i); u++){
+					if(foundPet(i, u, nameM) !=false){
+					
+						for(int k = 0; k<ROOMS_MAX; k++){
+							if(availabilityOfTheRoom(k) != false){
+								String name = nameM;
+								String type = clients.get(i).pets.get(u).getTypePet();
+								int age = clients.get(i).pets.get(u).getAge();
+								double weight = clients.get(i).pets.get(u).getWeight();
+								Pet pet = new Pet(name, type, age, weight);
+								rooms[k].setPet(pet);
+							}
+						
+						}
+				}else{
+						menssage = "the pet was not found";
+					}
+				}
+			}else{
+				menssage = "The client was not found";
+			}
+		}
+		return menssage;
+	}
+	//---------------------------------------------------------------clients.size()------------------------------------------------------
+	public int clientSize(){
+		return clients.size();
+	}
+	public int petSize(int i){
+		return clients.get(i).petSize();
 	}
  
 }
