@@ -70,5 +70,9 @@ public class Client{
 	public void addHistory(ClinicHistory hist, int i, int day, int month, int year){
 		pets.get(i).historyAdd(hist, day, month, year);
 	}
+	//---------------------------encontrar historia clinica----------------------------------------
+	public ClinicHistory foundHistory(int i){
+		return pets.get(i).foundHistory();
+	}
 	
 }

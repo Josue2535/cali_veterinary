@@ -6,13 +6,15 @@ public class Medicine{
 	private double quantify;
 	private double price;
 	private double frecuency;
+	private int doseGiven;
 	
 	//constructor
-	public Medicine(String theName, double theQuantify, double thePrice, double theFrecuency){
+	public Medicine(String theName, double theQuantify, double thePrice, double theFrecuency, int theDoseGiven){
 		name = theName;
 		quantify = theQuantify;
 		price = thePrice;
 		frecuency = theFrecuency;
+		doseGiven = theDoseGiven;
 	}
 	//gets y sets
 	public String getName(){
@@ -39,6 +41,12 @@ public class Medicine{
 	}
 	public void setFrecuency(double frecuency){
 		this.frecuency = frecuency;
+	}
+	public int getDoseGiven(){
+		return doseGiven;
+	}
+	public void setDoseGiven(int doseGiven){
+		this.doseGiven = doseGiven;
 	}
 	//metodos
 }

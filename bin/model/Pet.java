@@ -54,9 +54,25 @@ public class Pet{
 		historys.add(hist);
 		for(int k = 0; k<historys.size();k++){
 			if(historys.get(k)== hist){
-				historys.get(k).addDateExit(day, month, year);
+				historys.get(k).dateAdd( day, month, year);
 			}
 		}
 	}
-	
+	public ClinicHistory foundHistory(){
+		ClinicHistory hist = null;
+		for(int i =0; i<historys.size();i++){
+			if(historys.get(i).getState() == true){
+				hist = historys.get(i);
+			}
+		}
+		return hist;
+	}
+	//-------------------------------------------------------ingresos por masconta-----------------------------------------------------------
+	public double petIncome(){
+		double sum = 0.0;
+		for(int i = 0; i< historys.size(); i++){
+			historys.get(i);
+		}
+		return sum;
+	}
 }

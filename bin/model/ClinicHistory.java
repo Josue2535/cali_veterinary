@@ -65,8 +65,20 @@ public class ClinicHistory{
 		dateExit.add(date);
 	}
 	//---------------------------añadir medicamentos--------------------------------------------------------------
-	public void addMedicine(String name, double quantify, double price, double frecuency){
-		Medicine medicines = new Medicine(name,quantify, price, frecuency);
+	public void addMedicine(String name, double quantify, double price, double frecuency, int doseGiven){
+		Medicine medicines = new Medicine(name,quantify, price, frecuency, doseGiven);
+		medicine.add(medicines);
+	}
+	//-------------------------costo de medicamentos--------------------------------------------------------------
+	public double MedicationCost(){
+		double sum = 0.0;
+		for(int i = 0; i < medicine.size(); i++){
+			
+		}
+		return sum;
+	}
+	public void addMedication(Medicine medicines){
+		
 		medicine.add(medicines);
 	}
 }

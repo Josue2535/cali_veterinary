@@ -95,6 +95,14 @@ public class Main{
 			String type = "";
 			if(mascotType == 'C'){
 				type = Client.C;
+			}else if(mascotType == 'D'){
+				type = Client.D;
+			}else if(mascotType == 'B'){
+				type = Client.B;
+			}else if(mascotType == 'O'){
+				type = Client.O;
+			}else{
+				System.out.println("Ingrese un tipo valido");
 			}
 			veterinary.addClient( name, id, address , phoneNumber, nameM, type, age, weight);
 
@@ -138,11 +146,22 @@ public class Main{
 							System.out.println("enter the current year");
 							int year = reader.nextInt();
 							System.out.println(veterinary.hospitalizePet(id, nameM));
-							
-							System.out.println(veterinary.createHistoryPet(id, nameM, symptom,diagnostic, state, day, month, year));
+							System.out.println("Enter the name of medicine");
+							String nameMedicine = reader.nextLine();
+							System.out.println("Enter the quantity of medicine for dose (mlg)");
+							double quantify = reader.nextDouble();
+							System.out.println("Enter the price of medicine for mlg");
+							double price = reader.nextDouble();
+							System.out.println("Enter the frecuency with whom you drink medicine for hour");
+							double frecuency = reader.nextDouble();
+							System.out.println("Enter the quantity of dose");
+							int doseGiven = reader.nextInt();
+							System.out.println(veterinary.createHistoryPet(id, nameM, symptom,diagnostic, state, day, month, year, nameMedicine, quantify, price, frecuency, doseGiven));
 							
 							int option = reader.nextInt();
 							error = 1;
+						}else{
+							System.out.println("The pet of client wasn't finded, please enter the name again");
 						}
 					}
 					}else{
@@ -157,12 +176,28 @@ public class Main{
 
 			}
 			else if(userInput==3){
+				System.out.println("Enter the id of the pet owner");
+				int id = reader.nextInt();
+				System.out.println("Enter the name of the pet who wants to hospitalize");
+				String nameM = reader.nextLine();
+				System.out.println("Enter the current day.");
+				int day = reader.nextInt();
+				System.out.println("Enter the current month (please the number)");
+				int month = reader.nextInt();
+				System.out.println("Enter the current year");
+				int year = reader.nextInt();
+				if(veterinary.closeHistory(id, nameM, day, month , year ) != false){
+					System.out.println("The history of the mascot has been closed");
+				}else{
+					System.out.println("No active medical history or pet was found, please re-enter the data");
+				}
 
 
 
 
 			}
 			else if(userInput==4){
+				
 
 
 
@@ -223,17 +258,17 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("2.Hospitalize the pet.\n");
   System.out.println("                                                                          |");
-  System.out.println("3. Dar de alta ");
+  System.out.println("3.Close the clinical history ");
   System.out.println("                                                                          |");
-  System.out.println("4. Conocer los ingresos de la veterinaria");
+  System.out.println("4.Know the veterinary income");
   System.out.println("                                                                          |");
-  System.out.println("5. Anexar una historia clinica");
+  System.out.println("5.Append a clinical history");
   System.out.println("                                                                          |");
-  System.out.println("6. Numero del cuarto de la mascota hospitalizada");
+  System.out.println("6.Number of the pet's room");
   System.out.println("                                                                          |");
-  System.out.println("7. Ver historia clinica");
+  System.out.println("7.See the clinical history of an animal");
   System.out.println("                                                                          |");
-  System.out.println("8. Ingresos por hospitalizacion");
+  System.out.println("8.Calculate the cost of a hospitalization");
   System.out.println("---------------------------------------------------------------------------");
 
 

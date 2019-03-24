@@ -97,8 +97,9 @@ public class Veterinary{
 	
 	
 	//---------------------------Crear la historia de una mascota------------------------------------------------------------------
-	public String createHistoryPet(int id, String nameM, String symptom, String diagnostic, boolean state, int day, int month, int year){
+	public String createHistoryPet(int id, String nameM, String symptom, String diagnostic, boolean state, int day, int month, int year, String nameMedicine, double quantify, double price, double frecuency, int doseGiven){
 		String menssage = "";
+		Medicine medicine = new Medicine(nameMedicine, quantify, price, frecuency, doseGiven);
 		ClinicHistory hist = new ClinicHistory(state, symptom, diagnostic);
 		for(int i = 0; i<clientSize();i++){
 			if(clients.get(i).getId()==id){
@@ -107,6 +108,7 @@ public class Veterinary{
 					int w = u;
 				if(foundPet(k , w, nameM)!= false){
 					clients.get(i).addHistory(hist, u, day, month, year);
+					clients.get(i).foundHistory(k).addMedication(medicine);
 					menssage = "The clinical history has been created";
 				}else{
 					menssage = "Unable to create the clinical history";
@@ -118,7 +120,28 @@ public class Veterinary{
 		}
 		return menssage;
 	}
-	
+	//--------------------------------------cerrar la historia clinica----------------------------------------------------------------
+	public boolean closeHistory(int id, String nameM, int day, int month, int year ){
+		boolean close = false;
+		for(int i = 0; i<clientSize(); i++){
+			if(foundClient(id, i)!=false && close != true){
+				for(int k = 0; k< petSize(i); k++)
+					if(foundPet(i, k, nameM) != false && close != true){
+						for(int e = 0; e < ROOMS_MAX; e++){
+							if(clients.get(i).positionOfThePet(k) == rooms[e].getPet()){
+								rooms[e].setPet(null);
+								clients.get(i).foundHistory(k).addDateExit(day, month, year);
+								clients.get(i).foundHistory(k).setState(false);
+								close = true;
+							}
+						}
+					}
+			}
+				
+			
+		}
+		return close;
+	}
 	
 	
 	
