@@ -15,7 +15,7 @@ public class Client{
 	public final static String O = "Other";
 	
 	//Relaciones
-	public ArrayList<Pet> pets;
+	private ArrayList<Pet> pets;
 	
 	public Client(String theName, int theId, String theAddress, int thePhoneNumber){
 		name = theName;
@@ -62,6 +62,13 @@ public class Client{
 	}
 	public int petSize(){
 		return pets.size();
+	}
+	public Pet positionOfThePet(int i){
+		Pet pet = pets.get(i);
+		return pet;
+	}
+	public void addHistory(ClinicHistory hist, int i, int day, int month, int year){
+		pets.get(i).historyAdd(hist, day, month, year);
 	}
 	
 }

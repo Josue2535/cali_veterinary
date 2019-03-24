@@ -118,15 +118,17 @@ public class Main{
 		else if(userInput==2){
 			int error = 0;
 		    while (error == 0){
-			System.out.println("owner's identifier:");
+			System.out.println("Enter the id of the pet owner");
 			int id = reader.nextInt();
+			System.out.println("Enter the name of the pet who wants to hospitalize");
 			String nameM = reader.nextLine();
 			for(int i = 0; i<veterinary.clientSize();i++){
 				if(veterinary.foundClient(id, i) != false){
 					for(int k = 0; k<veterinary.petSize(i);k++){
 						if(veterinary.foundPet(i, k, nameM)!= false){
-							System.out.println("¿What pet do you want to hospitalize?");
-							System.out.println(myLittlePet.namesMascots(theID));
+							System.out.println("What symptoms does the pet have?");
+							String symptom = reader.nextLine();
+							
 							int option = reader.nextInt();
 							error = 1;
 						}

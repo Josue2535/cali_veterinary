@@ -64,4 +64,9 @@ public class ClinicHistory{
 		Date date = new Date(day, month, year);
 		dateExit.add(date);
 	}
+	//---------------------------añadir medicamentos--------------------------------------------------------------
+	public void addMedicine(String name, double quantify, double price, double frecuency){
+		Medicine medicines = new Medicine(name,quantify, price, frecuency);
+		medicine.add(medicines);
+	}
 }

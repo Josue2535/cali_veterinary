@@ -71,7 +71,7 @@ public class Veterinary{
 	//-----------------------------------buscar mascota---------------------------------------------------------------------------------------------
 	public boolean foundPet(int i,int k, String name){
 		boolean foundPet = false;
-		if(name.equals(clients.get(i).pets.get(k).getName())){
+		if(name.equals(clients.get(i).positionOfThePet(k).getName())){
 			foundPet = true;
 		}
 		return foundPet;
@@ -106,8 +106,7 @@ public class Veterinary{
 				for(int u = 0; u<petSize(i); u++){
 					int w = u;
 				if(foundPet(k , w, nameM)!= false){
-					clients.get(i).pets.get(u).historys.add(hist);
-					clients.get(i).pets.get(u).historys.get(0).dateAdd(day, month, year);
+					clients.get(i).addHistory(hist, u, day, month, year);
 					menssage = "The clinical history has been created";
 				}else{
 					menssage = "Unable to create the clinical history";
@@ -137,9 +136,9 @@ public class Veterinary{
 						for(int k = 0; k<ROOMS_MAX; k++){
 							if(availabilityOfTheRoom(k) != false){
 								String name = nameM;
-								String type = clients.get(i).pets.get(u).getTypePet();
-								int age = clients.get(i).pets.get(u).getAge();
-								double weight = clients.get(i).pets.get(u).getWeight();
+								String type = clients.get(i).positionOfThePet(u).getTypePet();
+								int age = clients.get(i).positionOfThePet(u).getAge();
+								double weight = clients.get(i).positionOfThePet(u).getWeight();
 								Pet pet = new Pet(name, type, age, weight);
 								rooms[k].setPet(pet);
 							}

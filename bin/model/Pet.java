@@ -8,7 +8,7 @@ public class Pet{
 	private int age;
 	private double weight;
 	
-	public ArrayList<ClinicHistory> historys;
+	private ArrayList<ClinicHistory> historys;
 	
 	//Costructor
 	public Pet(String theName, String theTypePet, int theAge, double theWeight){
@@ -50,5 +50,13 @@ public class Pet{
 		return historys;
 	}
 	// metodos
+	public void historyAdd(ClinicHistory hist,int day, int month, int year){
+		historys.add(hist);
+		for(int k = 0; k<historys.size();k++){
+			if(historys.get(k)== hist){
+				historys.get(k).addDateExit(day, month, year);
+			}
+		}
+	}
 	
 }
