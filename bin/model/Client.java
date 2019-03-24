@@ -76,7 +76,11 @@ public class Client{
 	}
 	//--------------------------suma de costos por mascota--------------------------------------
 	public double petsCost(){
-		
+		double sum = 0.0;
+		for(int i = 0; i<petSize(); i++){
+			sum += pets.get(i).petIncome();
+		}
+		return sum;
 	}
 	
 }

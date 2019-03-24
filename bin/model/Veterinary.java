@@ -186,6 +186,15 @@ public class Veterinary{
 	public int petSize(int i){
 		return clients.get(i).petSize();
 	}
+	
+	//--------------------------------------------------------------Ingresos totales de la veterinaria------------------------------------------------
+	public double veterinaryIncome(){
+		double sum = 0.0;
+		for(int i = 0; i<clientSize();i++){
+			sum += clients.get(i).petsCost();
+		}
+		return sum;
+	}
  
 }
 

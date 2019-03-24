@@ -201,6 +201,7 @@ public class Main{
 
 			}
 			else if(userInput==4){
+				System.out.println("The veterinary's income is" + " $" + veterinary.veterinaryIncome());
 				
 
 
