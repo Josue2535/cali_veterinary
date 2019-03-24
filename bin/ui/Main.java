@@ -182,7 +182,7 @@ public class Main{
 			else if(userInput==3){
 				System.out.println("Enter the id of the pet owner");
 				int id = reader.nextInt();
-				System.out.println("Enter the name of the pet who wants to hospitalize");
+				System.out.println("Enter the name of the pet who was discharge");
 				String nameM = reader.nextLine();
 				System.out.println("Enter the current day.");
 				int day = reader.nextInt();
@@ -209,6 +209,46 @@ public class Main{
 
 			}
 			else if(userInput==5){
+				System.out.println("Enter the id of the pet owner");
+				int id = reader.nextInt();
+				System.out.println("Enter the name of the pet you want to attach the story to");
+				String nameM = reader.nextLine();
+				System.out.println("the story is activated? \n" + "1. yes \n" + "2. not \n");
+				int activated = reader.nextInt();
+				boolean state = false;
+				if(activated == 1){
+				state = true;
+				}else if(activated == 2){
+					state = false;
+				}
+				
+				System.out.println("What symptoms does the pet have?");
+				String symptom = reader.nextLine();
+				System.out.println("What is the possible diagnosis of the pet?");
+				String diagnostic = reader.nextLine();
+				System.out.println("enter the current day");
+				int day = reader.nextInt();
+				System.out.println("enter the current month (please the number)");
+				int month = reader.nextInt();
+				System.out.println("enter the current year");
+				int year = reader.nextInt();
+				System.out.println("How many medicines does the animal need?");
+				int medicines = reader.nextInt();
+				for(int e = 0; e<medicines; e++){
+				System.out.println(veterinary.hospitalizePet(id, nameM));
+				System.out.println("Enter the name of medicine");
+				String nameMedicine = reader.nextLine();
+				System.out.println("Enter the quantity of medicine for dose (mlg)");
+				double quantify = reader.nextDouble();
+				System.out.println("Enter the price of medicine for mlg");
+				double price = reader.nextDouble();
+				System.out.println("Enter the frecuency with whom you drink medicine for hour");
+				double frecuency = reader.nextDouble();
+				System.out.println("Enter the quantity of dose");
+				int doseGiven = reader.nextInt();
+				System.out.println(veterinary.createHistoryPet(id, nameM, symptom,diagnostic, state, day, month, year, nameMedicine, quantify, price, frecuency, doseGiven));
+				}
+				
 
 
 
@@ -280,19 +320,19 @@ public void showOptions(){
 }
 
 public void init(){
+
 }
 
 
+/**public HumanClient(String name,String iD,String address,String telePhone){
 
-/**	public HumanClient(String name,String iD,String address,String telePhone){
-
-HumanClient client1 = new HumanClient("Andres","122","Cra 33a #29-56","3237985");
-HumanClient client2 = new HumanClient("Richard","123","Cra 33a #29-47","3213211");
+Client client1 = new HumanClient("Andres","122","Cra 33a #29-56","3237985");
+Client client2 = new HumanClient("Richard","123","Cra 33a #29-47","3213211");
 //public Mascot(String name,double weight,int age,char type,HumanClient owner){
 
-Mascot mascot1 = new Mascot("Bonny",20.0,3,'G',client1);
-Mascot mascot2 = new Mascot("Zeus",22.0,5,'P',client2);
-Mascot mascot3 = new Mascot("Hercules",30.0,6,'P',client2);
+Pet mascot1 = new Mascot("Bonny",20.0,3,'G',client1);
+Pet mascot2 = new Mascot("Zeus",22.0,5,'P',client2);
+Pet mascot3 = new Mascot("Hercules",30.0,6,'P',client2);
 client1.getMascots().add(mascot1);
 mascot1.setOwner(client1);
 client2.getMascots().add(mascot2);
