@@ -71,7 +71,7 @@ public class Pet{
 	public double petIncome(){
 		double sum = 0.0;
 		for(int i = 0; i< historys.size(); i++){
-			historys.get(i);
+			sum += historys.get(i).medicationCost();
 		}
 		return sum;
 	}

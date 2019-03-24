@@ -145,6 +145,9 @@ public class Main{
 							int month = reader.nextInt();
 							System.out.println("enter the current year");
 							int year = reader.nextInt();
+							System.out.println("How many medicines does the animal need?");
+							int medicines = reader.nextInt();
+							for(int e = 0; e<medicines; k++){
 							System.out.println(veterinary.hospitalizePet(id, nameM));
 							System.out.println("Enter the name of medicine");
 							String nameMedicine = reader.nextLine();
@@ -160,6 +163,7 @@ public class Main{
 							
 							int option = reader.nextInt();
 							error = 1;
+							}
 						}else{
 							System.out.println("The pet of client wasn't finded, please enter the name again");
 						}

@@ -49,4 +49,7 @@ public class Medicine{
 		this.doseGiven = doseGiven;
 	}
 	//metodos
+	public double medicineCost(){
+		return (quantify*price)*doseGiven;
+	}
 }

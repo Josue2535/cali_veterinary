@@ -70,10 +70,10 @@ public class ClinicHistory{
 		medicine.add(medicines);
 	}
 	//-------------------------costo de medicamentos--------------------------------------------------------------
-	public double MedicationCost(){
+	public double medicationCost(){
 		double sum = 0.0;
 		for(int i = 0; i < medicine.size(); i++){
-			
+			sum += medicine.get(i).medicineCost();
 		}
 		return sum;
 	}

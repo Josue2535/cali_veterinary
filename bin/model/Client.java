@@ -74,5 +74,9 @@ public class Client{
 	public ClinicHistory foundHistory(int i){
 		return pets.get(i).foundHistory();
 	}
+	//--------------------------suma de costos por mascota--------------------------------------
+	public double petsCost(){
+		
+	}
 	
 }
