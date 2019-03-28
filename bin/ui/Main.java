@@ -378,6 +378,7 @@ public void showOptions(){
 
 }
 public void init(){
+	//no se como hacerlo (nunca lo enseñaron)
 	
 }
 
