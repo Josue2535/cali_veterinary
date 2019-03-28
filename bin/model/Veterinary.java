@@ -188,12 +188,34 @@ public class Veterinary{
 	}
 	
 	//--------------------------------------------------------------Ingresos totales de la veterinaria------------------------------------------------
-	public double veterinaryIncome(){
+	public double veterinaryIncome(int dayN, int yearN, int monthN){
 		double sum = 0.0;
 		for(int i = 0; i<clientSize();i++){
-			sum += clients.get(i).petsCost();
+			sum += clients.get(i).petsCost(dayN, yearN, monthN);
 		}
 		return sum;
+	}
+	//------------------------------------------------Cuarto de la mascota---------------------------------------------------------------------------------------------
+	public int petsRoom(String nameM){
+		int number = 0;
+		for(int i = 0; i<ROOMS_MAX;i ++){
+			if(nameM.equals(rooms[i].getPet().getName())){
+				number = i++;
+			}
+		}
+		return number;
+	}
+	//------------------------------------------Saber si esta hospitalizada la mascota--------------------------------------------------------
+	public boolean availabilityThePet(String nameM){
+		boolean availability= false;
+		for(int i = 0; i<clientSize()&&availability != true; i++){
+			for(int k = 0; k<clients.get(i).petSize(); k++){
+				if(foundPet(k, i, nameM)!=false){
+					availability=clients.get(i).stateHistory(k);
+				}
+			}
+		}
+		return availability;
 	}
  
 }

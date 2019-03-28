@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main{
 	//Relations 
 
-
+	
 	private Veterinary veterinary;
 
 
@@ -49,7 +49,7 @@ public class Main{
 
 		int userInput=0;
 
-		while(userInput!=9){
+		while(userInput!=12){
 			showOptions();
 			userInput = reader.nextInt();
 			reader.nextLine();
@@ -62,6 +62,7 @@ public class Main{
 		int id = reader.nextInt();
 		System.out.println("Client address:");
 		String address = reader.nextLine();
+		
 		System.out.println("Client  cell:");
 		int phoneNumber = reader.nextInt();
 		
@@ -201,7 +202,13 @@ public class Main{
 
 			}
 			else if(userInput==4){
-				System.out.println("The veterinary's income is" + " $" + veterinary.veterinaryIncome());
+				System.out.println("Please enter the current day");
+				int dayN = reader.nextInt();
+				System.out.println("Please enter the current month (in numbers)");
+				int monthN = reader.nextInt();
+				System.out.println("Please enter the current year");
+				int yearN = reader.nextInt();
+				System.out.println("The veterinary's income is" + " $" + veterinary.veterinaryIncome(dayN, monthN, yearN) + "$");
 				
 
 
@@ -256,6 +263,17 @@ public class Main{
 
 			}
 			else if (userInput==6){
+				System.out.println("Enter the name of pet");
+				String nameM = reader.nextLine();
+				if(veterinary.availabilityThePet(nameM)!= false){
+					if(veterinary.petsRoom(nameM) != 0){
+					System.out.println("The number of the petsRoom is " + veterinary.petsRoom(nameM));
+					}else{
+						System.out.println("the pet is not in any room");
+					}
+				}else{
+					System.out.println("The pet is not hospitalized :)");
+				}
 
 
 
@@ -276,7 +294,23 @@ public class Main{
 
 
 			}
+			else if (userInput==9){
 
+
+
+
+			}
+			else if (userInput==10){
+
+
+
+
+			}else if (userInput==11){
+
+
+
+
+			}
 
 
 
@@ -314,6 +348,14 @@ public void showOptions(){
   System.out.println("7.See the clinical history of an animal");
   System.out.println("                                                                          |");
   System.out.println("8.Calculate the cost of a hospitalization");
+  System.out.println("                                                                          |");
+  System.out.println("9.See all historyz of the veterinary");
+  System.out.println("                                                                          |");
+  System.out.println("10. give the contact of the owner of a hospitalized animal");
+  System.out.println("                                                                          |");
+  System.out.println("11. Previous clinical history of a pet");
+  System.out.println("                                                                          |");
+  System.out.println("12. Exit the program");
   System.out.println("---------------------------------------------------------------------------");
 
 

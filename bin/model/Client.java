@@ -75,12 +75,73 @@ public class Client{
 		return pets.get(i).foundHistory();
 	}
 	//--------------------------suma de costos por mascota--------------------------------------
-	public double petsCost(){
+	public double petsCost(int dayN, int monthN, int yearN){
 		double sum = 0.0;
-		for(int i = 0; i<petSize(); i++){
-			sum += pets.get(i).petIncome();
+		for(int i = 0; i< petSize();i++){
+			if(C.equals(pets.get(i).getTypePet())){
+				if(1.0<=pets.get(i).getWeight() && 3.0>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*10000;
+				}else if(3.1<=pets.get(i).getWeight() && 10>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*12000;
+				}else if(10.1<=pets.get(i).getWeight() && 20>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*15000;
+				}else{
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*20000;
+				}
+			}else if(D.equals(pets.get(i).getTypePet())){
+				if(1.0<=pets.get(i).getWeight() && 3.0>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*15000;
+				}else if(3.1<=pets.get(i).getWeight() && 10>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*17000;
+				}else if(10.1<=pets.get(i).getWeight() && 20>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*20000;
+				}else{
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*25000;
+				}
+			}else if(B.equals(pets.get(i).getTypePet())){
+				if(1.0<=pets.get(i).getWeight() && 3.0>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*10000;
+				}else if(3.1<=pets.get(i).getWeight() && 10>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*12000;
+				}else if(10.1<=pets.get(i).getWeight() && 20>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*20000;
+				}else{
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*25000;
+				}
+			}else if(O.equals(pets.get(i).getTypePet())){
+				if(1.0<=pets.get(i).getWeight() && 3.0>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*10000;
+				}else if(3.1<=pets.get(i).getWeight() && 10>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*17000;
+				}else if(10.1<=pets.get(i).getWeight() && 20>=pets.get(i).getWeight() ){
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*30000;
+				}else{
+					sum+= (pets.get(i).dateOfPet(dayN, monthN, yearN))*30000;
+				}
+			}
+
+
 		}
+		
 		return sum;
+	}
+	public boolean stateHistory(int i){
+		return pets.get(i).stateHistory();
+	}
+	//-------------------------mostrar mascotas hospitalizadas--------------------------
+	public ArrayList<String> showPetsHospitalizad(){
+		ArrayList<String> menssage = new ArrayList<>();
+		String msg = "";
+		for(int i = 0; i<pets.size();i++){
+			if(stateHistory(i) != false){
+				msg += "The name of the pet is " + pets.get(i).getName() + " is a"+ pets.get(i).getTypePet() +"\n";
+				msg += pets.get(i).seeData();
+
+				menssage.add(msg);
+			}
+		}
+		
+		return menssage;
 	}
 	
 }

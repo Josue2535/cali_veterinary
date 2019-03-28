@@ -6,11 +6,12 @@ public class ClinicHistory{
 	private boolean state;
 	private String symptom;
 	private String diagnostic;
+	public final static int MAX_DATE = 1;
 	
 	private ArrayList<Client> human;
 	private ArrayList<Medicine> medicine;
-	private ArrayList<Date> dateHospitalization;
-	private ArrayList<Date> dateExit;
+	private Date[] dateHospitalization;
+	private Date[] dateExit;
 	//constructosr
 	public ClinicHistory(boolean theState, String theSymptom, String theDiagnostic){
 		
@@ -19,8 +20,8 @@ public class ClinicHistory{
 		diagnostic = theDiagnostic;
 		human = new ArrayList<>();
 		medicine = new ArrayList<>();
-		dateHospitalization = new ArrayList<>();
-		dateExit = new ArrayList<>();
+		dateHospitalization = new Date[MAX_DATE];
+		dateExit = new Date[MAX_DATE];
 	}
 	//gets y sets
 	public boolean getState(){
@@ -47,22 +48,29 @@ public class ClinicHistory{
 	public ArrayList<Medicine> getMedicine(){
 		return medicine;
 	}
-	public ArrayList<Date> getDateHospitalization(){
+	public Date[] getDateHospitalization(){
 		return dateHospitalization;
 	}
-	public ArrayList<Date> getDateExit(){
+	public void setDateHospitalization(Date[] dateHospitalization){
+		this.dateHospitalization = dateHospitalization;
+	}
+	public Date[] getDateExit(){
 		return dateExit;
+	}
+	public void setDateExit(Date[] dateExit){
+		this.dateExit = dateExit;
 	}
 	//Metodos
 	//-------------------------Añadir fecha de ingreso----------------------------------------------------------
 	public void dateAdd(int day, int month, int year){
 		Date date = new Date(day, month, year);
-		dateHospitalization.add(date);
+		dateHospitalization[0]=date;
+		
 	}
 	//------------------------Añir fecha de salida---------------------------------------------------------------
 	public void addDateExit(int day, int month, int year){
 		Date date = new Date(day, month, year);
-		dateExit.add(date);
+		dateExit[0] = date;
 	}
 	//---------------------------añadir medicamentos--------------------------------------------------------------
 	public void addMedicine(String name, double quantify, double price, double frecuency, int doseGiven){
@@ -73,7 +81,13 @@ public class ClinicHistory{
 	public double medicationCost(){
 		double sum = 0.0;
 		for(int i = 0; i < medicine.size(); i++){
-			sum += medicine.get(i).medicineCost();
+			double quantify = medicine.get(i).getQuantify();
+			double price = medicine.get(i).getPrice();
+			double doseGiven = medicine.get(i).getDoseGiven();
+			
+			
+			
+			sum += (quantify*price)*doseGiven;
 		}
 		return sum;
 	}
@@ -81,4 +95,25 @@ public class ClinicHistory{
 		
 		medicine.add(medicines);
 	}
+	//----------------------------date exit---------------------------
+	public Date dateExit(){
+		return dateExit[0];
+	}
+	public Date dateHospitalization(){
+		return dateHospitalization[0];
+	}
+	//---------------------nombre de la medicina----------------------
+	public String nameMedicine(){
+		String msg = "";
+		for(int i = 0; i<medicine.size();i++){
+			msg += "" + medicine.get(i).getName() + "\n";
+		}
+		return msg;
+	}
+	/**public int daysPet(int dayN, int monthN, int yearN, int i){
+		int days = 0;
+		if()
+		
+	}
+	*/
 }
