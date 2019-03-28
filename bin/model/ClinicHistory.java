@@ -110,10 +110,5 @@ public class ClinicHistory{
 		}
 		return msg;
 	}
-	/**public int daysPet(int dayN, int monthN, int yearN, int i){
-		int days = 0;
-		if()
-		
-	}
-	*/
+	
 }

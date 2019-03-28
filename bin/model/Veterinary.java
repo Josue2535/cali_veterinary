@@ -42,15 +42,19 @@ public class Veterinary{
 	}
 	//metodos
 	//------------------------Agregar cliente y mascota--------------------------------------------------------
-	public void addClient(String name, int id, String address , int phoneNumber, String nameM, String type, int age, double weight){
+	public String addClient(String name, int id, String address , int phoneNumber, String nameM, String type, int age, double weight){
+		String msg = "";
 		Client customer = new Client(name, id, address, phoneNumber);
 		clients.add(customer);
 		int u = 0;
 		for(int i = 0; i < clients.size(); i++){
 			if(foundClient(id, i) != false){
 				clients.get(i).addPet(nameM, type, age, weight);
+			}else{
+				msg = "The client wasn't finded, please enter the identifier again";
 			}
 		}
+		return msg;
 	}
 	
 	
@@ -217,6 +221,70 @@ public class Veterinary{
 		}
 		return availability;
 	}
+	//---------------------------- historia clinica de las mascotas hospitalizadas----------------------------------------
+	public String showPetsHospitalizad(){
+		String msg = "";
+		for(int i = 0; i<clients.size();i++){
+			msg+= "----------------------------------------" + "\n";
+			msg+= clients.get(i).showPetsHospitalizad();
+		}
+		return msg;
+		
+	}
+	//-----------------------historia clinica de una mascota--------------------------------------------------------
+	public String seeDataAnimal(String name,String nameM){
+		String msg = "";
+		for(int i = 0; i<clients.size();i++){
+			if(name.equals(client.get(i).getName)){
+				if(client.get(i).seeDataAnimal(name)!=null){
+				msg = client.get(i).seeDataAnimal(name);
+				}
+			}
+		}
+		return msg;
+	}
+	//----------------------costo de una hospitalizacion----------------------------------------------------------
+	public double costPet(String name, String nameM){
+		double cost = 0.0;
+		for(int i = 0; i<clients.size();i++){
+			if(name.equals(client.get(i).getName)){
+				cost += clients.get(i).costPet( name);
+			}
+		}
+		return cost;
+	}
+	//--------------------Historias pasadas de una mascota-------------------
+	public String seeLastDataAnimal(String name,String nameM){
+		String msg = "";
+		for(int i = 0; i<clients.size();i++){
+			if(name.equals(client.get(i).getName)){
+				if(client.get(i).seeLastDataAnimal(name)!=null){
+				msg = client.get(i).seeDataAnimal(name);
+				}
+			}
+		}
+		return msg;
+	}
+	//-----------------datos del dueño de la mascota hospitalizada----------------
+	public String dataWonderPet(String name){
+		String msg = "";
+		for(int i = 0; i<ROOMS_MAX;i ++){
+			if(nameM.equals(rooms[i].getPet().getName())){
+				for(int k = 0; k<clients.size(); k++){
+					for(int e = 0; e< clients.get(i).petSize(); e++){
+						if(name.equals(clients.get(i).positionOfThePet(e).getName())){
+							msg += "The name of the pet wonder is " + clients.get(i).getName() + "\n";
+							msg += "The address of the pet wonder is " + clients.get(i).getAddress() + "\n";
+							msg += "The phone of the pet wonder is " + clients.get(i).getPhoneNumber() + "\n";
+						}
+					}
+				}
+			}
+		}
+				
+		return msg;
+	}
+	
  
 }
 
