@@ -9,10 +9,6 @@ public class Client{
 	private String address;
 	private int phoneNumber;
 	
-	public final static String C = "Cat";
-	public final static String D = "Dog";
-	public final static String B = "Bird";
-	public final static String O = "Other";
 	
 	//Relaciones
 	private ArrayList<Pet> pets;
