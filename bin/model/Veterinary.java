@@ -235,20 +235,20 @@ public class Veterinary{
 	public String seeDataAnimal(String name,String nameM){
 		String msg = "";
 		for(int i = 0; i<clients.size();i++){
-			if(name.equals(client.get(i).getName)){
-				if(client.get(i).seeDataAnimal(name)!=null){
-				msg = client.get(i).seeDataAnimal(name);
+			if(name.equals(clients.get(i).getName())){
+				if(clients.get(i).seeDataAnimal(name)!=null){
+				msg = clients.get(i).seeDataAnimal(name);
 				}
 			}
 		}
 		return msg;
 	}
 	//----------------------costo de una hospitalizacion----------------------------------------------------------
-	public double costPet(String name, String nameM){
+	public double costPet(String name, String nameM,int dayN, int monthN, int yearN){
 		double cost = 0.0;
 		for(int i = 0; i<clients.size();i++){
-			if(name.equals(client.get(i).getName)){
-				cost += clients.get(i).costPet( name);
+			if(name.equals(clients.get(i).getName())){
+				cost += clients.get(i).costPet( name, dayN, monthN, yearN);
 			}
 		}
 		return cost;
@@ -257,9 +257,9 @@ public class Veterinary{
 	public String seeLastDataAnimal(String name,String nameM){
 		String msg = "";
 		for(int i = 0; i<clients.size();i++){
-			if(name.equals(client.get(i).getName)){
-				if(client.get(i).seeLastDataAnimal(name)!=null){
-				msg = client.get(i).seeDataAnimal(name);
+			if(name.equals(clients.get(i).getName())){
+				if(clients.get(i).seeLastDataAnimal(name)!=null){
+				msg = clients.get(i).seeDataAnimal(name);
 				}
 			}
 		}
@@ -269,7 +269,7 @@ public class Veterinary{
 	public String dataWonderPet(String name){
 		String msg = "";
 		for(int i = 0; i<ROOMS_MAX;i ++){
-			if(nameM.equals(rooms[i].getPet().getName())){
+			if(name.equals(rooms[i].getPet().getName())){
 				for(int k = 0; k<clients.size(); k++){
 					for(int e = 0; e< clients.get(i).petSize(); e++){
 						if(name.equals(clients.get(i).positionOfThePet(e).getName())){

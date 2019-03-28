@@ -274,11 +274,11 @@ public class Main{
 
 			}
 			else if(userInput==7){
-				System.out.printLn("Enter the name of the pet wonder");
+				System.out.println("Enter the name of the pet wonder");
 				String name = reader.nextLine();
-				System.out.printLn("Enter the name of the pet ");
+				System.out.println("Enter the name of the pet ");
 				String nameM = reader.nextLine();
-				System.out.printLn(veterinary.seeDataAnimal(name, nameM));
+				System.out.println(veterinary.seeDataAnimal(name, nameM));
 
 
 
@@ -289,7 +289,13 @@ public class Main{
 				String name = reader.nextLine();
 				System.out.println("Enter the name of the pet ");
 				String nameM = reader.nextLine();
-				System.out.println("The cost of hospitalization is" + costPet(name, nameM) + "$");
+				System.out.println("Please enter the current day");
+				int dayN = reader.nextInt();
+				System.out.println("Please enter the current month (in numbers)");
+				int monthN = reader.nextInt();
+				System.out.println("Please enter the current year");
+				int yearN = reader.nextInt();
+				System.out.println("The cost of hospitalization is" + veterinary.costPet(name, nameM, dayN, monthN, yearN) + "$");
 
 
 
@@ -371,7 +377,7 @@ public void showOptions(){
 
 
 }
-init(){
+public void init(){
 	
 }
 

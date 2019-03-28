@@ -148,13 +148,15 @@ public class Client{
 		String msg = "";
 		for(int i = 0; i<pets.size(); i++){
 			if(name.equals(pets.get(i).getName())){
-				msg = pets.get(i).seeDataAnimal();
+				for(int k = 0; k<pets.get(i).seeDataAnimal().size(); k++ ){
+				msg = pets.get(i).seeDataAnimal().get(k);
+				}
 			}
 		}
 		return msg;
 	}
 	//-------------------Costo de mascota hospitalizada----------------------------
-	public double costPet(String name){
+	public double costPet(String name, int dayN, int monthN, int yearN){
 		double cost = 0.0;
 		for(int i = 0; i<pets.size(); i++){
 			if(name.equals(pets.get(i).getName())){
@@ -194,7 +196,7 @@ public class Client{
 				}else if(3.1<=pets.get(i).getWeight() && 10>=pets.get(i).getWeight() ){
 					cost+= (pets.get(i).dateOfPet1(dayN, monthN, yearN))*17000;
 				}else if(10.1<=pets.get(i).getWeight() && 20>=pets.get(i).getWeight() ){
-					sum+= (pets.get(i).dateOfPet1(dayN, monthN, yearN))*30000;
+					cost+= (pets.get(i).dateOfPet1(dayN, monthN, yearN))*30000;
 				}else{
 					cost+= (pets.get(i).dateOfPet1(dayN, monthN, yearN))*30000;
 				}
@@ -209,7 +211,8 @@ public class Client{
 		String msg = "";
 		for(int i = 0; i<pets.size(); i++){
 			if(name.equals(pets.get(i).getName())){
-				msg = pets.get(i).seeLastDataAnimal();
+				for(int k = 0; k<pets.get(i).seeLastDataAnimal().size(); k++)
+				msg = pets.get(i).seeLastDataAnimal().get(k);
 			}
 		}
 		return msg;

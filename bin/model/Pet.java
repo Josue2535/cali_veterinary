@@ -129,7 +129,7 @@ public class Pet{
 			
 				
 				msg += "income on the date " + historys.get(i).dateHospitalization().getDay() + "/" + historys.get(i).dateHospitalization().getMonth() + "/" + historys.get(i).dateHospitalization().getYear()+"\n"; 
-				if(historys.dateExit()!= null){
+				if(historys.get(i).dateExit()!= null){
 					msg += "out on the date " + historys.get(i).dateExit().getDay() + "/" + historys.get(i).dateExit().getMonth() + "/" + historys.get(i).dateExit().getYear()+"\n"; 
 				}
 				msg += "Admission with symptoms: \n" + historys.get(i).getSymptom() + "\n";
@@ -182,7 +182,7 @@ public class Pet{
 		String msg = "";
 		for(int i = 0; i<historys.size();i++){
 			
-				if(historys.dateExit()!= null){
+				if(historys.get(i).dateExit()!= null){
 					if(historys.get(i).getState()!= true){
 					msg += "income on the date " + historys.get(i).dateHospitalization().getDay() + "/" + historys.get(i).dateHospitalization().getMonth() + "/" + historys.get(i).dateHospitalization().getYear()+"\n"; 
 				
