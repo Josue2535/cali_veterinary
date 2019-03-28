@@ -366,7 +366,7 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("8. Calculate the cost of a hospitalization");
   System.out.println("                                                                          |");
-  System.out.println("9. See all historyz of the veterinary");
+  System.out.println("9. See all historys hospitalization of the veterinary ");
   System.out.println("                                                                          |");
   System.out.println("10. give the contact of the owner of a hospitalized animal");
   System.out.println("                                                                          |");
