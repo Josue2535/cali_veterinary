@@ -204,5 +204,23 @@ public class Pet{
 		}
 		return menssage;
 	}
+	/*
+	*Description This method allows to calculate the body mass index for a pet.
+	*pre: The pet was created before and its attributes height and weight are not null neither height must be zero.
+	*post: The BMI is calculated.
+	*@return The pet body mass index. Returns -1 if the height is zero  due to the division on zero does not exist.
+	*/
+	public double bmi(){
+		double imc = 0.0;
+		
+		if(getHeight() == 0){
+			imc = -1.0;
+		}
+		else{
+			imc = weight/(height*height);
+		}
+		return imc;
+	}
+
 	
 }
