@@ -8,7 +8,14 @@ public class Medicine{
 	private double frecuency;
 	private int doseGiven;
 	
-	//constructor
+	/**
+	* Description: This is the constructor method.
+	* @param The name.
+	* @param The quantify.
+	* @param The price.
+	* @param The frecuency.
+	* @param The dose given.
+	*/
 	public Medicine(String theName, double theQuantify, double thePrice, double theFrecuency, int theDoseGiven){
 		name = theName;
 		quantify = theQuantify;
@@ -16,39 +23,96 @@ public class Medicine{
 		frecuency = theFrecuency;
 		doseGiven = theDoseGiven;
 	}
-	//gets y sets
+	/**
+	* Description: This method allows that other <br> classes can access to the medicine name.
+	* pre: The medicine was initialized before and it's status atribute isn't null. 
+	* @return The name of the medicine.
+	*/
 	public String getName(){
 		return name;
 	}
+	/**
+	* Description: This method allows <br> changing the name of medicine.
+	* pre:the name is not null.
+	* post:the name was changed.
+	* @param the name to which you <br> want to change.
+	*/
 	public void setName(String name){
 		this.name = name;
 	}
-	
+	/**
+	* Description: This method allows that other <br> classes can access to the medicine quantify.
+	* pre: The medicine was initialized before and it's status atribute isn't null. 
+	* @return The quantify of the medicine.
+	*/
 	public double getQuantify(){
 		return quantify;
 	}
+	/**
+	* Description: This method allows <br> changing the quantify.
+	* pre:the medicine is not null.
+	* post:the quantify was changed.
+	* @param the quantify to which you <br> want to change.
+	*/
 	public void setQuantify(double quantify){
 		this.quantify = quantify;
 	}
+	/**
+	* Description: This method allows that other <br> classes can access to the medicine price.
+	* pre: The medicine was initialized before and it's status atribute isn't null. 
+	* @return The price of the medicine.
+	*/
 	public double getPrice(){
 		return price;
 	}
+	/**
+	* Description: This method allows <br> changing the price.
+	* pre:the price is not null.
+	* post:the price was changed.
+	* @param the price to which you <br> want to change.
+	*/
 	public void setPrice(double price){
 		this.price = price;
 	}
+	/**
+	* Description: This method allows that other <br> classes can access to frecuency of the medicine .
+	* pre: The medicine was initialized before and it's status atribute isn't null. 
+	* @return The frecuency of the medicine.
+	*/
 	public double getFrecuency(){
 		return frecuency;
 	}
+	/**
+	* Description: This method allows <br> changing the frecuency.
+	* pre:the medicine is not null.
+	* post:the frecuancy was changed.
+	* @param the frecuency to which you <br> want to change.
+	*/
 	public void setFrecuency(double frecuency){
 		this.frecuency = frecuency;
 	}
+	/**
+	* Description: This method allows that other <br> classes can access to dose given of medicine .
+	* pre: The medicine was initialized before and it's status atribute isn't null. 
+	* @return The dose given of medicine.
+	*/
 	public int getDoseGiven(){
 		return doseGiven;
 	}
+	/**
+	* Description: This method allows <br> changing the dose given.
+	* pre:the dose given is not null.
+	* post:the dose given was changed.
+	* @param the dose given to which you <br> want to change.
+	*/
 	public void setDoseGiven(int doseGiven){
 		this.doseGiven = doseGiven;
 	}
-	//metodos
+	/**
+	* Description: This method allows that other <br> classes can access to cost of medicine .
+	* pre: The medicine was initialized before and it's status atribute isn't null. 
+	* @return The cost of medicine.
+	*/
 	public double medicineCost(){
 		return (quantify*price)*doseGiven;
 	}

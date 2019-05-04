@@ -7,16 +7,18 @@ public class Pet{
 	private String typePet;
 	private int age;
 	private double weight;
+	private double height;
 	
 	private ArrayList<ClinicHistory> historys;
 	
 	//Costructor
-	public Pet(String theName, String theTypePet, int theAge, double theWeight){
+	public Pet(String theName, String theTypePet, int theAge, double theWeight, double height){
 	name = theName;
 	typePet = theTypePet;
 	age = theAge;
 	historys = new ArrayList<>();
 	weight = theWeight;
+	this.height = height;
 	}
 	
 	//gets y sets
@@ -45,6 +47,12 @@ public class Pet{
 	}
 	public void setWeigth(double weight){
 		this.weight = weight;
+	}
+	public double getHeight(){
+		return height;
+	}
+	public void setHeigth(double height){
+		this.height = height;
 	}
 	public ArrayList<ClinicHistory> getHistorys(){
 		return historys;
@@ -78,9 +86,9 @@ public class Pet{
 	public int dateOfPet(int dayN, int monthN, int yearN){
 		int daysPet = 0;
 		for(int i = 0; i< ClinicHistory.MAX_DATE; i++){
-				int day2 =historys.get(i).dateHospitalization().getDay();
-				int month2= historys.get(i).dateHospitalization().getMonth();
-				int year2 = historys.get(i).dateHospitalization().getYear();
+				int day2 =historys.get(i).getDateHospitalization1().getDay();
+				int month2= historys.get(i).getDateHospitalization1().getMonth();
+				int year2 = historys.get(i).getDateHospitalization1().getYear();
 			if(historys.get(i).dateExit()!= null){
 				int day1 =historys.get(i).dateExit().getDay();
 				int month1= historys.get(i).dateExit().getMonth();
@@ -108,7 +116,7 @@ public class Pet{
 		for(int i = 0; i<historys.size();i++){
 			if(historys.get(i).dateExit() == null){
 				
-				msg += "income on the date " + historys.get(i).dateHospitalization().getDay() + "/" + historys.get(i).dateHospitalization().getMonth() + "/" + historys.get(i).dateHospitalization().getYear()+"\n";  
+				msg += "income on the date " + historys.get(i).getDateHospitalization1().getDay() + "/" + historys.get(i).getDateHospitalization1().getMonth() + "/" + historys.get(i).getDateHospitalization1().getYear()+"\n";  
 				msg += "Admission with symptoms: \n" + historys.get(i).getSymptom() + "\n";
 				msg += "Possible diagnosis: \n" + historys.get(i).getDiagnostic() +"\n";
 				msg += "it was supplied: \n" + historys.get(i).nameMedicine();
@@ -128,7 +136,7 @@ public class Pet{
 		for(int i = 0; i<historys.size();i++){
 			
 				
-				msg += "income on the date " + historys.get(i).dateHospitalization().getDay() + "/" + historys.get(i).dateHospitalization().getMonth() + "/" + historys.get(i).dateHospitalization().getYear()+"\n"; 
+				msg += "income on the date " + historys.get(i).getDateHospitalization1().getDay() + "/" + historys.get(i).getDateHospitalization1().getMonth() + "/" + historys.get(i).getDateHospitalization1().getYear()+"\n"; 
 				if(historys.get(i).dateExit()!= null){
 					msg += "out on the date " + historys.get(i).dateExit().getDay() + "/" + historys.get(i).dateExit().getMonth() + "/" + historys.get(i).dateExit().getYear()+"\n"; 
 				}
@@ -152,9 +160,9 @@ public class Pet{
 	public int dateOfPet1(int dayN, int monthN, int yearN){
 		int daysPet = 0;
 		for(int i = 0; i< ClinicHistory.MAX_DATE; i++){
-				int day2 =historys.get(i).dateHospitalization().getDay();
-				int month2= historys.get(i).dateHospitalization().getMonth();
-				int year2 = historys.get(i).dateHospitalization().getYear();
+				int day2 =historys.get(i).getDateHospitalization1().getDay();
+				int month2= historys.get(i).getDateHospitalization1().getMonth();
+				int year2 = historys.get(i).getDateHospitalization1().getYear();
 			if(historys.get(i).dateExit()!= null){
 				int day1 =historys.get(i).dateExit().getDay();
 				int month1= historys.get(i).dateExit().getMonth();
@@ -184,7 +192,7 @@ public class Pet{
 			
 				if(historys.get(i).dateExit()!= null){
 					if(historys.get(i).getState()!= true){
-					msg += "income on the date " + historys.get(i).dateHospitalization().getDay() + "/" + historys.get(i).dateHospitalization().getMonth() + "/" + historys.get(i).dateHospitalization().getYear()+"\n"; 
+					msg += "income on the date " + historys.get(i).getDateHospitalization1().getDay() + "/" + historys.get(i).getDateHospitalization1().getMonth() + "/" + historys.get(i).getDateHospitalization1().getYear()+"\n"; 
 				
 					msg += "out on the date " + historys.get(i).dateExit().getDay() + "/" + historys.get(i).dateExit().getMonth() + "/" + historys.get(i).dateExit().getYear()+"\n"; 
 				

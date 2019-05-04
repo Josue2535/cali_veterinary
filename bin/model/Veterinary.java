@@ -6,19 +6,26 @@ public class Veterinary{
 	
 	public final static int ROOMS_MAX = 8;
 	private String name;
+	private double income;
+	private double serIncome;
 	
 	private Room[] rooms;
 	private ArrayList<ClinicHistory> history;
 	private ArrayList<Client> clients;
+	private ArrayList<Service> services ;
 	
 	
 	//constructor
 	
-	public Veterinary(String theName){
+	public Veterinary(String theName, double income, double serIncome){
 		name = theName;
+		this.income = income;
+		this.serIncome = serIncome;
 		rooms = new Room[ROOMS_MAX];
 		history = new ArrayList<>();
 		clients = new ArrayList<>();
+		services = new ArrayList<Service>();
+		
 		
 	}
 	//gets y sets
@@ -40,16 +47,33 @@ public class Veterinary{
 	public ArrayList<Client> getClients(){
 		return clients;
 	}
+	/**
+	* Description: This method allows to access to the veterinary's total income by hospitalizations.
+	* @return The total income by hospitalizations.
+	*/
+	public double getIncome(){
+		
+		return income ;
+	}
+	
+	/**
+	* Description: This method allows that other classes can change the income atribute of the veterinary.
+	* post: The income atribute change it's value.
+	*/
+	public void setIncome(double income){
+		
+		this.income = income;
+	}
 	//metodos
 	//------------------------Agregar cliente y mascota--------------------------------------------------------
-	public String addClient(String name, int id, String address , int phoneNumber, String nameM, String type, int age, double weight){
+	public String addClient(String name, int id, String address , int phoneNumber, String nameM, String type, int age, double weight, double height){
 		String msg = "";
 		Client customer = new Client(name, id, address, phoneNumber);
 		clients.add(customer);
 		int u = 0;
 		for(int i = 0; i < clients.size(); i++){
 			if(foundClient(id, i) != false){
-				clients.get(i).addPet(nameM, type, age, weight);
+				clients.get(i).addPet(nameM, type, age, weight, height);
 			}else{
 				msg = "The client wasn't finded, please enter the identifier again";
 			}
@@ -101,10 +125,9 @@ public class Veterinary{
 	
 	
 	//---------------------------Crear la historia de una mascota------------------------------------------------------------------
-	public String createHistoryPet(int id, String nameM, String symptom, String diagnostic, boolean state, int day, int month, int year, String nameMedicine, double quantify, double price, double frecuency, int doseGiven){
+	public String createHistoryPet(int id, String nameM, String symptom, String diagnostic, boolean state, int day, int month, int year, String nameMedicine, double quantify, double price, double frecuency, int doseGiven, Pet pet){
 		String menssage = "";
-		Medicine medicine = new Medicine(nameMedicine, quantify, price, frecuency, doseGiven);
-		ClinicHistory hist = new ClinicHistory(state, symptom, diagnostic);
+		ClinicHistory hist = new ClinicHistory(state, symptom, diagnostic, pet);
 		for(int i = 0; i<clientSize();i++){
 			if(clients.get(i).getId()==id){
 				int k = i;
@@ -112,7 +135,7 @@ public class Veterinary{
 					int w = u;
 				if(foundPet(k , w, nameM)!= false){
 					clients.get(i).addHistory(hist, u, day, month, year);
-					clients.get(i).foundHistory(k).addMedication(medicine);
+					clients.get(i).foundHistory(k).addMedication(nameMedicine, quantify, price, frecuency, doseGiven);
 					menssage = "The clinical history has been created";
 				}else{
 					menssage = "Unable to create the clinical history";
@@ -166,7 +189,8 @@ public class Veterinary{
 								String type = clients.get(i).positionOfThePet(u).getTypePet();
 								int age = clients.get(i).positionOfThePet(u).getAge();
 								double weight = clients.get(i).positionOfThePet(u).getWeight();
-								Pet pet = new Pet(name, type, age, weight);
+								double height = clients.get(i).positionOfThePet(u).getHeight();
+								Pet pet = new Pet(name, type, age, weight, height);
 								rooms[k].setPet(pet);
 							}else{
 								menssage = "there are no rooms available.";
@@ -284,6 +308,102 @@ public class Veterinary{
 				
 		return msg;
 	}
+	
+	
+	
+	
+	public void registerNewService(Service service){
+		
+		services.add(service);
+		
+		serIncome+= service.getCost();
+	}
+	
+	public double totalIncome(){
+		
+		double totalIncome = income+serIncome;
+		
+		return totalIncome;
+	}
+	
+	public double averageIncomePerServices(){
+		
+		double average = 0;
+		int count = 0;
+		
+		for(int i = 0; i < services.size(); i++){
+			
+			average+= services.get(i).getCost();
+			count++;
+		}
+		
+		if(count > 0){
+			
+			average/= ((double)count);
+		}
+		
+		return average;
+	}
+	
+	
+	public boolean verifyWeek(Date date1, Date date2){
+		
+		boolean week = false;
+		
+		if(date1.getYear() == date2.getYear()){
+			
+			if(date1.getMonth() == date2.getMonth()){
+				
+				if((date2.getDay() - date1.getDay()) == 7){
+				
+					week = true;
+				}
+			}
+			else if(date2.getMonth() == (date1.getMonth() + 1)) {
+				
+				if(date1.getDay() > 23){
+					
+					if(((date2.getDay() + 30) - (date1.getDay())) == 7){
+						
+						week = true;
+					}
+				}
+			}
+		}
+		else if((date2.getYear()) == (date1.getYear() + 1)){
+			
+			if((date1.getMonth() == 12)&&(date2.getMonth() == 1)){
+				
+				if(date1.getDay() > 23){
+					
+					if(((date2.getDay() + 30) - (date1.getDay())) == 7){
+						
+						week = true;
+					}
+				}
+			}
+		}
+		
+		return week;
+	}
+	
+	public String serviceReport(Date date1, Date date2){
+		
+		String rep = "";
+		
+		for(int i = 0; i < services.size(); i++){
+			
+			if(services.get(i).verifyDate(date1, date2) == true){
+				
+				rep +="/n"+services.get(i).report()+"/n" ;
+			}
+		}
+		
+		return rep;
+	}	
+	
+	
+	
 	
  
 }

@@ -9,9 +9,11 @@ public class ClinicHistory{
 	public final static int MAX_DATE = 1;
 	private Pet pet;
 	
+	
 	private ArrayList<Medicine> medicine;
 	private Date[] dateHospitalization;
 	private Date[] dateExit;
+
 	
 	
 	/**
@@ -206,15 +208,23 @@ public class ClinicHistory{
 		}
 		return sum;
 	}
-	/**
-	* Description: This method allows <br> add the medicine.
-	* post: The medicine is added.
-	* @param The madication to which you <br> want to add the story.
+	/*
+	*Description This method allows to add new medicines that were prescription during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: New medicines were added to the patient clinic story.
+	*@param The medicine name. This param must be not null.
+	*@param The medicine dose, this param refers to the amount of medicine supplied to the pet each time according the frequence assigned.
+	*@param The medicine cost by each dose. This param could be empty.
+	*@param The frequency of medicine application. This param could be empty.
+	*@return A message that indiques if medicine was added to the patient clinic story
 	*/
+
 	
-	public void addMedication(Medicine medicines){
-		
-		medicine.add(medicines);
+	public String addMedication(String n, double q, double p, double f, int d){
+		String ms = "Se agrego la medicina del paciente";
+		Medicine m = new Medicine(n, q, p, f, d );
+		medicine.add(m);
+		return ms;
 	}
 	/**
 	* Description: This method allows <br> classes can access the date exit of the pet.
@@ -231,7 +241,7 @@ public class ClinicHistory{
 	* post: The frist date hopitalization.
 	* @return The frist date hospitalization.
 	*/
-	public Date dateHospitalization(){
+	public Date getDateHospitalization1(){
 		return dateHospitalization[0];
 	}
 	/**
@@ -246,6 +256,109 @@ public class ClinicHistory{
 			msg += "" + medicine.get(i).getName() + "\n";
 		}
 		return msg;
+	}
+	/**
+	*Description This method allows to add a new symptom presented during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: A new symptom were added to the patient clinic story.
+	*@param The new symptom presented. This param must be not null.
+	*/
+
+	public void newNote(String note){
+		String ms = getSymptom() + note + "\n";
+		setSymptom(ms);
+	}
+	/**
+	*Description This method allows to add new notes to the possible diagnostic during the hospitalization at the patient stories.
+	*pre: The patient clinic story must be not null.
+	*post: New notes were added to the possible diagnostic in the patient clinic story.
+	*@param The notes of possible diagnostic. This param must be not null.
+	*/
+	public void note(String note){
+		String ms = getSymptom() + "\n nueva nota: \n" + "\n";
+		setSymptom(ms);
+	}
+	
+	
+	
+	public boolean verifyDate(Date date1, Date date2){
+		
+		boolean range = false;
+		
+		if((getDateHospitalization1().getYear() >= date1.getYear()) && (getDateHospitalization1().getYear() <= date2.getYear())){
+			
+			if(date1.getYear() == date2.getYear()){
+				
+				if(date1.getMonth() == date2.getMonth()){
+					
+					if(getDateHospitalization1().getMonth() == date1.getMonth()){
+					
+						if((getDateHospitalization1().getDay() >= date1.getDay()) &&(getDateHospitalization1().getDay() <= date2.getDay())){
+							
+							range = true;
+						}
+					}
+				}
+				else{
+					
+					if((getDateHospitalization1().getMonth() > date1.getMonth()) && (getDateHospitalization1().getMonth() < date2.getMonth())){
+						
+						range = true;
+					}
+					else if((getDateHospitalization1().getMonth() == date1.getMonth()) && (getDateHospitalization1().getDay() >= date1.getDay())){
+						
+						range = true;
+					}
+					else if((getDateHospitalization1().getMonth() == date2.getMonth()) && (getDateHospitalization1().getDay() <= date2.getDay())){
+						
+						range = true;
+					}
+				}
+			}
+			else{
+				
+				if((getDateHospitalization1().getYear() > date1.getYear())&&(getDateHospitalization1().getYear() < date2.getYear())){
+					
+					range = true;
+				}
+				else if(getDateHospitalization1().getYear() == date1.getYear()){
+					
+					if(getDateHospitalization1().getMonth() > date1.getMonth()){
+						
+						range = true;
+					}
+					else if(getDateHospitalization1().getMonth() == date1.getMonth()){
+						
+						if(getDateHospitalization1().getDay() >= date1.getDay()){
+						
+							range = true;
+						}
+					}
+				}
+				else if(getDateHospitalization1().getYear() == date2.getYear()){
+					
+					if(getDateHospitalization1().getMonth() < date2.getMonth()){
+						
+						range = true;
+					}
+					else if(getDateHospitalization1().getMonth() == date2.getMonth()){
+						
+						if(getDateHospitalization1().getDay() <= date2.getDay()){
+						
+							range = true;
+						}
+					}
+				}
+
+			}
+		}
+		
+		return range;
+	}
+	
+	public Pet getPet(){
+		
+		return pet ;
 	}
 	
 }

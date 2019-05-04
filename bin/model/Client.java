@@ -52,8 +52,8 @@ public class Client{
 		return pets;
 	}
 	// metodos 
-	public void addPet(String nameM, String type, int age, double weight){
-		Pet pet = new Pet(nameM, type, age, weight);
+	public void addPet(String nameM, String type, int age, double weight, double height){
+		Pet pet = new Pet(nameM, type, age, weight, height);
 		pets.add(pet);
 	}
 	public int petSize(){
@@ -213,5 +213,23 @@ public class Client{
 		}
 		return msg;
 	}
-	
+	/**
+	*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
+	*pre: The client was created before.
+	*post: The address and /or phone number of the client is updated.
+	*@param The new address of the client. This param could be empty.
+	*@param The new phone number of the client. This param could be empty.
+	*/
+	public void updateData(String address, int phoneNumber){
+		
+		if(!(address.equals(""))){
+			
+			setAddress(address);
+		}
+		if(! (phoneNumber== 0)){
+			
+			setPhoneNumber(phoneNumber);
+		}
+	}
+
 }
