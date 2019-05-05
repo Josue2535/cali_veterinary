@@ -275,8 +275,8 @@ public class ClinicHistory{
 	*@param The notes of possible diagnostic. This param must be not null.
 	*/
 	public void note(String note){
-		String ms = getSymptom() + "\n nueva nota: \n" + "\n";
-		setSymptom(ms);
+		String ms = getDiagnostic() + "\n nueva nota: \n" + "\n";
+		setDiagnostic(ms);
 	}
 	
 	
