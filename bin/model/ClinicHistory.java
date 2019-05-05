@@ -186,7 +186,7 @@ public class ClinicHistory{
 	* @param the dose given of medicine.
 	*/
 	public void addMedicine(String name, double quantify, double price, double frecuency, int doseGiven){
-		Medicine medicines = new Medicine(name,quantify, price, frecuency, doseGiven);
+		Medicine medicines = new Medicine(name,quantify, price, frecuency);
 		medicine.add(medicines);
 	}
 	
@@ -200,11 +200,11 @@ public class ClinicHistory{
 		for(int i = 0; i < medicine.size(); i++){
 			double quantify = medicine.get(i).getQuantify();
 			double price = medicine.get(i).getPrice();
-			double doseGiven = medicine.get(i).getDoseGiven();
+			double frecuancy = medicine.get(i).getFrecuency();
 			
 			
 			
-			sum += (quantify*price)*doseGiven;
+			sum += (quantify*price)*frecuancy;
 		}
 		return sum;
 	}
@@ -220,9 +220,9 @@ public class ClinicHistory{
 	*/
 
 	
-	public String addMedication(String n, double q, double p, double f, int d){
+	public String addMedication(String n, double q, double p, double f){
 		String ms = "Se agrego la medicina del paciente";
-		Medicine m = new Medicine(n, q, p, f, d );
+		Medicine m = new Medicine(n, q, p, f);
 		medicine.add(m);
 		return ms;
 	}
@@ -359,6 +359,13 @@ public class ClinicHistory{
 	public Pet getPet(){
 		
 		return pet ;
+	}
+	public String peti(String name){
+		String ms = "";
+		if(name.equals(pet.getName())){
+			ms += "The BMI of the mascot is: " + pet.bmi();
+		}
+		return ms;
 	}
 	
 }

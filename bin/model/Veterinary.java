@@ -138,7 +138,7 @@ public class Veterinary{
 					int w = u;
 				if(foundPet(k , w, nameM)!= false){
 					clients.get(i).addHistory(hist, u, day, month, year);
-					clients.get(i).foundHistory(k).addMedication(nameMedicine, quantify, price, frecuency, doseGiven);
+					clients.get(i).foundHistory(k).addMedication(nameMedicine, quantify, price, frecuency);
 					menssage = "The clinical history has been created";
 				}else{
 					menssage = "Unable to create the clinical history";
@@ -403,8 +403,49 @@ public class Veterinary{
 		}
 		
 		return rep;
-	}	 
+	}	
+	//Mostrar el cauculo de la masa
+	public String calculateBMI(String name){
+		String ms = "";
+		for(int i = 0; i< history.size(); i++){
+			ms += history.get(i).peti(name);
+		}
+		if(ms.equals("")){
+			ms = "the name of the pet was not found";
+		}
+		return ms;
+	}
+	//cambiar direccion del ciente
+	public String change(int id, String address, int phoneNumber){
+		String ms = "";
+		for(int i = 0; i<clients.size(); i++){
+			if(id == clients.get(i).getId()){
+				clients.get(i).updateData( address, phoneNumber);
+				ms = "  ";
+			}
+		}
+		if(ms.equals("")){
+			ms = "no se encontro el cliente";
+		}
 	
+		return ms;
+	}
+	
+	// metodo para agregar medicina a mascota hospitalizada
+	public String addMedicinePetHospitali(String name, String n, double q, double p, double f ){
+		String m = "";
+		return m;
+	}
+	// Metodo 21
+	public String hospitalizatedPetNotesDiagnostic(String nombre, String nota){
+		String m = "";
+		return m;
+	}
+	// metodo 22
+	public String hospitalizatedPetNotesSimtom(String nombre, String nota){
+		String m = "";
+		return m;
+	}
 	
 	
 	

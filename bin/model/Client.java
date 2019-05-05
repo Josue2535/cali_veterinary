@@ -226,7 +226,7 @@ public class Client{
 			
 			setAddress(address);
 		}
-		if(! (phoneNumber== 0)){
+		if(phoneNumber != 0){
 			
 			setPhoneNumber(phoneNumber);
 		}

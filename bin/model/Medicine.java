@@ -6,7 +6,7 @@ public class Medicine{
 	private double quantify;
 	private double price;
 	private double frecuency;
-	private int doseGiven;
+	
 	
 	/**
 	* Description: This is the constructor method.
@@ -16,12 +16,12 @@ public class Medicine{
 	* @param The frecuency.
 	* @param The dose given.
 	*/
-	public Medicine(String theName, double theQuantify, double thePrice, double theFrecuency, int theDoseGiven){
+	public Medicine(String theName, double theQuantify, double thePrice, double theFrecuency ){
 		name = theName;
 		quantify = theQuantify;
 		price = thePrice;
 		frecuency = theFrecuency;
-		doseGiven = theDoseGiven;
+		
 	}
 	/**
 	* Description: This method allows that other <br> classes can access to the medicine name.
@@ -91,29 +91,13 @@ public class Medicine{
 	public void setFrecuency(double frecuency){
 		this.frecuency = frecuency;
 	}
-	/**
-	* Description: This method allows that other <br> classes can access to dose given of medicine .
-	* pre: The medicine was initialized before and it's status atribute isn't null. 
-	* @return The dose given of medicine.
-	*/
-	public int getDoseGiven(){
-		return doseGiven;
-	}
-	/**
-	* Description: This method allows <br> changing the dose given.
-	* pre:the dose given is not null.
-	* post:the dose given was changed.
-	* @param the dose given to which you <br> want to change.
-	*/
-	public void setDoseGiven(int doseGiven){
-		this.doseGiven = doseGiven;
-	}
+	
 	/**
 	* Description: This method allows that other <br> classes can access to cost of medicine .
 	* pre: The medicine was initialized before and it's status atribute isn't null. 
 	* @return The cost of medicine.
 	*/
 	public double medicineCost(){
-		return (quantify*price)*doseGiven;
+		return (quantify*price)*frecuency;
 	}
 }

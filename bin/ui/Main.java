@@ -461,6 +461,40 @@ public class Main{
 				Date date1 = new Date(day1, month1, year1);
 				Date date2 = new Date(day2, month2, year2);
 				System.out.println(veterinary.serviceReport(date1, date2));
+			}else if(userInput == 18){
+				System.out.println("please enter the name of the pet you want to know about the BMI");
+				String name = reader.nextLine();
+				System.out.println(veterinary.calculateBMI(name));
+			}else if(userInput == 19){
+				System.out.println("please enter the customer ID");
+				int id = reader.nextInt();
+				System.out.println("please enter the option you want to change from the client (1. phone, 2. adders, 3. all )");
+				int num = reader.nextInt();
+				if(num == 1){
+					String address = "";
+					System.out.println("enter the new client number");
+					int phoneNumber = reader.nextInt();
+					System.out.println(veterinary.change(id, address, phoneNumber));
+				}else if(num == 2){
+					int phoneNumber = 0;
+					
+					System.out.println("enter the new customer address ");
+					
+					String address = "";
+					System.out.println(veterinary.change(id, address, phoneNumber));
+				}else if(num == 3){
+					System.out.println("enter the new client number");
+					int phoneNumber = reader.nextInt();
+					
+					System.out.println("enter the new customer address  ");
+					String address = "";
+					
+					System.out.println(veterinary.change(id, address, phoneNumber));
+					
+				}else{
+					System.out.println("please enter a correct option");
+				}
+				
 			}
 
 
@@ -518,7 +552,11 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("17. Report of services rendered given an initial date and a final date.");
   System.out.println("                                                                          |");
-  System.out.println("18. Exit the program");
+  System.out.println("18. Calculate the BMI of a pet.");
+  System.out.println("                                                                          |");
+  System.out.println("19. change a customer's address or phone number.");
+  System.out.println("                                                                          |");
+  System.out.println("19. Exit the program");
   System.out.println("---------------------------------------------------------------------------");
 
 
