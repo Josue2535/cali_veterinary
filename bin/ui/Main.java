@@ -56,13 +56,18 @@ public class Main{
 
 
 			if(userInput==1){
+
 	    System.out.println("Client name:");
 		String name = reader.nextLine();
+		
+		
+		System.out.println("Client address: ");
+		String address = reader.nextLine();
+
+
 		System.out.println("Client  iD:");
 		int id = reader.nextInt();
 
-		System.out.println("Client address:");
-		String address = reader.nextLine();
 
 		System.out.println("Client  cell:");
 		int phoneNumber = reader.nextInt();
@@ -89,7 +94,10 @@ public class Main{
 			System.out.println("Mascot weight:");
 			double weight = reader.nextDouble();
 			reader.nextLine();
-
+			
+			System.out.println("Mascot height:");
+			double height = reader.nextDouble();
+			reader.nextLine();
 
 			System.out.println("Mascot type(1 for cat, 2 for dog, 3 for bird, 4 for others):");
 
@@ -106,7 +114,7 @@ public class Main{
 			}else{
 				System.out.println("Ingrese un tipo valido");
 			}
-			System.out.println(veterinary.addClient( name, id, address , phoneNumber, nameM, type, age, weight));
+			System.out.println(veterinary.addClient( name, id, address , phoneNumber, nameM, type, age, weight, height));
 
 
 
@@ -157,10 +165,45 @@ public class Main{
 							double frecuency = reader.nextDouble();
 							System.out.println("Enter the quantity of dose");
 							int doseGiven = reader.nextInt();
-							System.out.println(veterinary.createHistoryPet(id, nameM, symptom,diagnostic, state, day, month, year, nameMedicine, quantify, price, frecuency, doseGiven));
+							
+							System.out.println("Mascot name:");
+			String nameMa = reader.nextLine();
 
-							int option = reader.nextInt();
-							error = 1;
+
+			System.out.println("Mascot age:");
+			int age = reader.nextInt();
+			reader.nextLine();
+
+
+
+			System.out.println("Mascot weight:");
+			double weight = reader.nextDouble();
+			reader.nextLine();
+			
+			System.out.println("Mascot height:");
+			double height = reader.nextDouble();
+			reader.nextLine();
+
+			System.out.println("Mascot type(1 for cat, 2 for dog, 3 for bird, 4 for others):");
+
+			int mascotType = reader.nextInt();
+			String type = "";
+			if(mascotType == 1){
+				type = "Cat";
+			}else if(mascotType == 2){
+				type = "Dog";
+			}else if(mascotType == 3){
+				type = "Bird";
+			}else if(mascotType == 4){
+				type = "Other";
+			}else{
+				System.out.println("Ingrese un tipo valido");
+			}
+			Pet pet = new Pet(nameMa, type, age, weight, height);
+			System.out.println(veterinary.createHistoryPet(id, nameM, symptom,diagnostic, state, day, month, year, nameMedicine, quantify, price, frecuency, doseGiven, pet));
+
+			int option = reader.nextInt();
+			error = 1;
 
 
 
@@ -244,7 +287,40 @@ public class Main{
 				double frecuency = reader.nextDouble();
 				System.out.println("Enter the quantity of dose");
 				int doseGiven = reader.nextInt();
-				System.out.println(veterinary.createHistoryPet(id, nameM, symptom,diagnostic, state, day, month, year, nameMedicine, quantify, price, frecuency, doseGiven));
+				String nameMa = reader.nextLine();
+
+
+			System.out.println("Mascot age:");
+			int age = reader.nextInt();
+			reader.nextLine();
+
+
+
+			System.out.println("Mascot weight:");
+			double weight = reader.nextDouble();
+			reader.nextLine();
+			
+			System.out.println("Mascot height:");
+			double height = reader.nextDouble();
+			reader.nextLine();
+
+			System.out.println("Mascot type(1 for cat, 2 for dog, 3 for bird, 4 for others):");
+
+			int mascotType = reader.nextInt();
+			String type = "";
+			if(mascotType == 1){
+				type = "Cat";
+			}else if(mascotType == 2){
+				type = "Dog";
+			}else if(mascotType == 3){
+				type = "Bird";
+			}else if(mascotType == 4){
+				type = "Other";
+			}else{
+				System.out.println("Ingrese un tipo valido");
+			}
+			Pet pet = new Pet(nameMa, type, age, weight, height);
+				System.out.println(veterinary.createHistoryPet(id, nameM, symptom,diagnostic, state, day, month, year, nameMedicine, quantify, price, frecuency, doseGiven, pet));
 				}
 
 
@@ -372,13 +448,25 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("11. Previous clinical history of a pet");
   System.out.println("                                                                          |");
-  System.out.println("12. Exit the program");
+  System.out.println("12. Calculate service income ");
+  System.out.println("                                                                          |");
+  System.out.println("13. Calculate the total income of the veterinary ");
+  System.out.println("                                                                          |");
+  System.out.println("14. Add to the system new services provided by the veterinary ");
+  System.out.println("                                                                          |");
+  System.out.println("15. Promedio de ingresos por servicios ");
+  System.out.println("                                                                          |");
+  System.out.println("16. Average income of the veterinarian in a week.");
+  System.out.println("                                                                          |");
+  System.out.println("17. Report of services rendered given an initial date and a final date.");
+  System.out.println("                                                                          |");
+  System.out.println("18. Exit the program");
   System.out.println("---------------------------------------------------------------------------");
 
 
 }
 public void init(){
-	//no se como hacerlo (nunca lo enseñaron)
+	
 	
 }
 
