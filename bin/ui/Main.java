@@ -49,7 +49,7 @@ public class Main{
 
 		int userInput=0;
 
-		while(userInput!=12){
+		while(userInput!=18){
 			showOptions();
 			userInput = reader.nextInt();
 			reader.nextLine();
@@ -402,6 +402,41 @@ public class Main{
 				
 
 
+
+			
+			}else if (userInput==12){
+				System.out.println("the income from services are: " + veterinary.getSerIncome());
+
+			}else if (userInput==13){
+				System.out.println("the total income of the veterinay is: " + veterinary.totalIncome());
+
+			}else if (userInput==14){
+				System.out.println("please enter the type of service for pet bath, G for pet bath at home, N for nail cutting, P for dental prophylaxis, V for vaccine) ");
+				char type = reader.next().charAt(0);
+				double cost = 0.0;
+				if(type == 'S'){
+					cost = 20000.0;
+				}else if(type == 'G'){
+					cost = 30000.0;
+				}else if(type == 'N'){
+					cost = 8000.0;
+				}else if(type == 'P'){
+					cost = 12000.0;
+				}else if(type == 'V'){
+					cost = 45000.0;
+				}else{
+					System.out.println("Please enter an appropriate type (the numbre)");
+				}
+				System.out.println("Please enter the day the service was performed (the numbre)");
+				int day = reader.nextInt();
+				System.out.println("please enter the month the service was performed (the numbre)");
+				int month = reader.nextInt();
+				System.out.println("please enter the year the service was performed (the numbre)");
+				int year = reader.nextInt();
+				Date d = new Date(day, month, year);
+				System.out.println("please enter the customer's name");
+				String nc = reader.nextLine();
+				
 
 			}
 

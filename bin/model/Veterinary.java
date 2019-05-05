@@ -47,6 +47,9 @@ public class Veterinary{
 	public ArrayList<Client> getClients(){
 		return clients;
 	}
+	public double getSerIncome(){
+		return serIncome;
+	}
 	/**
 	* Description: This method allows to access to the veterinary's total income by hospitalizations.
 	* @return The total income by hospitalizations.
@@ -325,7 +328,7 @@ public class Veterinary{
 		
 		return totalIncome;
 	}
-	
+	//promedio de ingresos por servicio
 	public double averageIncomePerServices(){
 		
 		double average = 0;
