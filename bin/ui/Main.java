@@ -436,8 +436,31 @@ public class Main{
 				Date d = new Date(day, month, year);
 				System.out.println("please enter the customer's name");
 				String nc = reader.nextLine();
+				System.out.println("please enter the pet name");
+				String np = reader.nextLine();
+				Service s = new Service(type, cost, d, nc, np);
 				
 
+			}else if(userInput == 15){
+				System.out.println("The average income from services is: " + veterinary.averageIncomePerServices());
+			}else if(userInput == 16){
+				System.out.println("jejejeje hola :3");
+			}else if(userInput == 17){
+				System.out.println("please enter the initial day ");
+				int day1 = reader.nextInt();
+				System.out.println("please enter the initial month ");
+				int month1 = reader.nextInt();
+				System.out.println("please enter the initial year ");
+				int year1 = reader.nextInt();
+				System.out.println("please enter the final day ");
+				int day2 = reader.nextInt();
+				System.out.println("please enter the final month ");
+				int month2 = reader.nextInt();
+				System.out.println("please enter the final year ");
+				int year2 = reader.nextInt();
+				Date date1 = new Date(day1, month1, year1);
+				Date date2 = new Date(day2, month2, year2);
+				System.out.println(veterinary.serviceReport(date1, date2));
 			}
 
 
@@ -489,7 +512,7 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("14. Add to the system new services provided by the veterinary ");
   System.out.println("                                                                          |");
-  System.out.println("15. Promedio de ingresos por servicios ");
+  System.out.println("15. Average income for services ");
   System.out.println("                                                                          |");
   System.out.println("16. Average income of the veterinarian in a week.");
   System.out.println("                                                                          |");
