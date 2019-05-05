@@ -49,7 +49,7 @@ public class Main{
 
 		int userInput=0;
 
-		while(userInput!=18){
+		while(userInput <= 23){
 			showOptions();
 			userInput = reader.nextInt();
 			reader.nextLine();
@@ -495,6 +495,40 @@ public class Main{
 					System.out.println("please enter a correct option");
 				}
 				
+			}else if(userInput == 20){
+				System.out.println("please enter the name of the pet you want to add the medicine");
+				String name = reader.nextLine();
+				
+				System.out.println("Enter the name of the medicine");
+				String n = reader.nextLine();
+				
+				System.out.println("Enter the amount of medicine");
+				double q = reader.nextDouble();
+				
+				
+				System.out.println("Enter the price of medicine");
+				double p = reader.nextDouble();
+				
+				System.out.println("Enter the frequency in which the medicine is taken");
+				double f = reader.nextDouble();
+				
+				System.out.println(veterinary.addMedicinePetHospitali( name,  n,  q,  p,  f ));
+			}else if(userInput == 21){
+				System.out.println("please enter the name of the pet you want add the possible diagnosis note");
+				String name = reader.nextLine();
+				
+				System.out.println("please enter the diagnosis note");
+				String nota = reader.nextLine();
+				
+				System.out.println(veterinary.hospitalizatedPetNotesDiagnostic(name, nota));
+			}else if(userInput == 22){
+				System.out.println("please enter the name of the pet you want add the new symptom");
+				String name = reader.nextLine();
+				
+				System.out.println("please enter the new symptom");
+				String nota = reader.nextLine();
+				
+				System.out.println(veterinary.hospitalizatedPetNotesSimtom(name, nota));
 			}
 
 
@@ -556,7 +590,13 @@ public void showOptions(){
   System.out.println("                                                                          |");
   System.out.println("19. change a customer's address or phone number.");
   System.out.println("                                                                          |");
-  System.out.println("19. Exit the program");
+  System.out.println("20. Add a medicine to the hospitalized pet.");
+  System.out.println("                                                                          |");
+  System.out.println("21. Add a note of possible diagnosis to a hospitalized pet.");
+  System.out.println("                                                                          |");
+  System.out.println("22. Add a note of new symptoms to a hospitalized pet.");
+  System.out.println("                                                                          |");
+  System.out.println("23. Exit the program");
   System.out.println("---------------------------------------------------------------------------");
 
 

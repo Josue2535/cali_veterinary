@@ -434,16 +434,57 @@ public class Veterinary{
 	// metodo para agregar medicina a mascota hospitalizada
 	public String addMedicinePetHospitali(String name, String n, double q, double p, double f ){
 		String m = "";
+		for(int i = 0; i<history.size(); i++){
+			if(name.equals(history.get(i).getPet().getName())){
+				if((history.get(i).getState()) == true){
+					history.get(i).addMedicine(n,q, p, f);
+					m = "The medicine was added correctly to the pet";
+				}else{
+					m = "The pet is not hospitalized";
+				}
+			}
+		}
+		if(m.equals("")){
+			m = "the pet was not found";
+			
+		}
 		return m;
 	}
 	// Metodo 21
 	public String hospitalizatedPetNotesDiagnostic(String nombre, String nota){
 		String m = "";
+		for(int i = 0; i<history.size(); i++){
+			if(name.equals(history.get(i).getPet().getName())){
+				if((history.get(i).getState()) == true){
+					history.get(i).note(nota);
+					m = "the note of a possible diagnosis of correctly added";
+				}else{
+					m = "The pet is not hospitalized";
+				}
+			}
+		}
+		if(m.equals("")){
+			m = "the pet was not found";
+		}
+		
 		return m;
 	}
 	// metodo 22
 	public String hospitalizatedPetNotesSimtom(String nombre, String nota){
 		String m = "";
+		for(int i = 0; i<history.size(); i++){
+			if(name.equals(history.get(i).getPet().getName())){
+				if((history.get(i).getState()) == true){
+					history.get(i).newNote( nota);
+					m = "the note of the new symptoms has been added";
+				}else{
+					m = "The pet is not hospitalized";
+				}
+			}
+		}
+		if(m.equals("")){
+			m = "the pet was not found";
+		}
 		return m;
 	}
 	

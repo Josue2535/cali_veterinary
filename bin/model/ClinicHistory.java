@@ -185,7 +185,7 @@ public class ClinicHistory{
 	* @param the frecuancy of medicine.
 	* @param the dose given of medicine.
 	*/
-	public void addMedicine(String name, double quantify, double price, double frecuency, int doseGiven){
+	public void addMedicine(String name, double quantify, double price, double frecuency){
 		Medicine medicines = new Medicine(name,quantify, price, frecuency);
 		medicine.add(medicines);
 	}
@@ -280,7 +280,13 @@ public class ClinicHistory{
 	}
 	
 	
-	
+	/**
+	* Description: This method allows <br> classes can access name of the medicine.
+	* pre: The medicine are not null.
+	* post: The name of the medicine.
+	* @param : The first date you want to see
+	* @return The name of the medicine.
+	*/
 	public boolean verifyDate(Date date1, Date date2){
 		
 		boolean range = false;
