@@ -197,7 +197,7 @@ public class Client{
 					cost+= (pets.get(i).dateOfPet1(dayN, monthN, yearN))*30000;
 				}
 			}
-			cost += pets.get(i).medicationCost();
+			cost += pets.get(i).petIncome();
 			}
 		}
 		return cost;

@@ -11,7 +11,14 @@ public class Pet{
 	
 	private ArrayList<ClinicHistory> historys;
 	
-	//Costructor
+	/**
+	* Description: This is the constructor method.
+	* @param The name of the pet.
+	* @param The type of the pet.
+	* @param The age of the pet.
+	* @param The weight of the pet.
+	* @param The height of the pet.
+	*/
 	public Pet(String theName, String theTypePet, int theAge, double theWeight, double height){
 	name = theName;
 	typePet = theTypePet;
@@ -21,43 +28,102 @@ public class Pet{
 	this.height = height;
 	}
 	
-	//gets y sets
+	/**
+	* Description: This method allows knowing the name of the pet to another.
+	* pre: The name of the pet already exists. 
+	* @return The name of pet.
+	*/
 	public String getName(){
 		return name;
 	}
+	/**
+	* Description: This method allows changing the name of the pet through another class.
+	* pre: the name of the pet already exists.
+	* @param : The name you want to pet. 
+	*/
 	public void setName(String name){
 		this.name = name;
 	}
-	
+	/**
+	* Description: This method allows to tell another class the type of the pet.
+	* pre: The type of the pet already exists. 
+	* @return The type of pet.
+	*/
 	public String getTypePet(){
 		return typePet;
 	}
+	/**
+	* Description: This method allows changing the type of the pet through another class.
+	* pre: the type of the pet already exists.
+	* @param : The type you want to pet. 
+	*/
 	public void setTypePet(String typePet){
 		this.typePet = typePet;
 	}
+	/**
+	* Description: This method allows to tell another class the age of the pet.
+	* pre: The age of the pet already exists. 
+	* @return The age of pet.
+	*/
 	public int getAge(){
 		return age;
 	}
+	/**
+	* Description: This method allows changing the age of the pet through another class.
+	* pre: the age of the pet already exists.
+	* @param : The age you want to pet. 
+	*/
 	public void setAge(int age){
 		this.age = age;
 	}
-	
+	/**
+	* Description: This method allows to tell another class the weight of the pet.
+	* pre: The weight of the pet already exists. 
+	* @return The weight of pet.
+	*/
 	public double getWeight(){
 		return weight;
 	}
+	/**
+	* Description: This method allows changing the weight of the pet through another class.
+	* pre: the weight of the pet already exists.
+	* @param : The weight you want to pet. 
+	*/
 	public void setWeigth(double weight){
 		this.weight = weight;
 	}
+	/**
+	* Description: This method allows to tell another class the height of the pet.
+	* pre: The height of the pet already exists. 
+	* @return The height of pet.
+	*/
 	public double getHeight(){
 		return height;
 	}
+	/**
+	* Description: This method allows changing the height of the pet through another class.
+	* pre: the height of the pet already exists.
+	* @param : The height you want to pet. 
+	*/
 	public void setHeigth(double height){
 		this.height = height;
 	}
+	/**
+	* Description: This method allows to tell another class the list of arrangement of medical records of the pet.
+	* pre: The height of the pet already exists. 
+	* @return The height of pet.
+	*/
 	public ArrayList<ClinicHistory> getHistorys(){
 		return historys;
 	}
-	// metodos
+	/**
+	* Description: This method allows adding a clinical history of the pet through another class.
+	* pre: the the medical records of the pet already exists.
+	* @param : The the medical records you want to pet. 
+	* @param : The day of admission
+	* @param : The month of admission
+	* @param : The year of admission
+	*/
 	public void historyAdd(ClinicHistory hist,int day, int month, int year){
 		historys.add(hist);
 		for(int k = 0; k<historys.size();k++){
@@ -66,6 +132,11 @@ public class Pet{
 			}
 		}
 	}
+	/**
+	* Description: This method allows to tell another class the clinical history that is active of the pet.
+	* pre: The history of the pet already exists. 
+	* @return The clinical history is active of pet.
+	*/
 	public ClinicHistory foundHistory(){
 		ClinicHistory hist = null;
 		for(int i =0; i<historys.size();i++){
@@ -75,7 +146,11 @@ public class Pet{
 		}
 		return hist;
 	}
-	//-------------------------------------------------------ingresos por masconta-----------------------------------------------------------
+	/**
+	* Description: This method allows to tell another class the pet income of medications.
+	* pre: The history of the pet already exists. 
+	* @return The pet income.
+	*/
 	public double petIncome(){
 		double sum = 0.0;
 		for(int i = 0; i< historys.size(); i++){
@@ -83,6 +158,14 @@ public class Pet{
 		}
 		return sum;
 	}
+	/**
+	* Description: This method allows to tell another class the days the pet was hospitalized until the current date.
+	* pre: The history of the pet already exists. 
+	* @param : Current day.
+	* @param : Current month.
+	* @param : Current year.
+	* @return The number of days that the pet was hospitalized until the .
+	*/
 	public int dateOfPet(int dayN, int monthN, int yearN){
 		int daysPet = 0;
 		for(int i = 0; i< ClinicHistory.MAX_DATE; i++){
@@ -101,6 +184,11 @@ public class Pet{
 		}  
 		return daysPet;
 	}
+	/**
+	* Description: This method allows to tell another class the history of the pet is active.
+	* pre: The history of the pet already exists. 
+	* @return True if it is active and false if you do not.
+	*/
 	public boolean stateHistory(){
 		boolean hist = false;
 		for(int i =0; i<historys.size() && hist != true;i++){
@@ -110,7 +198,11 @@ public class Pet{
 		}
 		return hist;
 	}
-	//-----------------------ver historia clinica por animal hospitalizado-----------------------
+	/**
+	* Description: This method allows to tell another class the clinical history of a pet.
+	* pre: The history of the pet already exists. 
+	* @return The clinical history of a pet.
+	*/
 	public String seeData(){
 		String msg = "";
 		for(int i = 0; i<historys.size();i++){
@@ -129,7 +221,11 @@ public class Pet{
 		return msg;
 		
 	} 
-	//-----------------Historia clinica de un animal-----------------------
+	/**
+	* Description: This method allows to tell another class all the clinical history of a pet.
+	* pre: The history of the pet already exists. 
+	* @return All the clinical history of a pet.
+	*/
 	public ArrayList<String> seeDataAnimal(){
 		ArrayList<String> menssage = new ArrayList<>();
 		String msg = "";
@@ -156,7 +252,14 @@ public class Pet{
 		}
 		return menssage;
 	}
-	//------------------------costo por hospitalizacion-------------------------------
+	/**
+	* Description: This method allows to tell another class the days the pet was hospitalized until the current date.
+	* pre: The history of the pet already exists. 
+	* @param : Current day.
+	* @param : Current month.
+	* @param : Current year.
+	* @return The number of days that the pet was hospitalized until the .
+	*/
 	public int dateOfPet1(int dayN, int monthN, int yearN){
 		int daysPet = 0;
 		for(int i = 0; i< ClinicHistory.MAX_DATE; i++){
@@ -174,17 +277,12 @@ public class Pet{
 		}
 		return daysPet;
 	}		
-	public double medicationCost(){
-		double cost = 0.0;
-		for(int i = 0; i< ClinicHistory.MAX_DATE; i++){
-			if(historys.get(i).dateExit()!= null){
-				historys.get(i).medicationCost();
-			
-			}
-		}
-		return cost;
-	}
-	//------------------------------historias anteriores--------------------------
+	
+	/**
+	* Description: This method allows to tell another class the clinical history of a pet.
+	* pre: The history of the pet already exists. 
+	* @return The clinical history of a pet.
+	*/
 	public ArrayList<String> seeLastDataAnimal(){
 		ArrayList<String> menssage = new ArrayList<>();
 		String msg = "";

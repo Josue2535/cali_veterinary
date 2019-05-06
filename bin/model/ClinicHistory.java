@@ -361,11 +361,21 @@ public class ClinicHistory{
 		
 		return range;
 	}
-	
+	/**
+	* Description: This method allows to see another class the pet that is in the room.
+	* pre: The macota is already created.
+	* @return The pet that is in the room.
+	*/
 	public Pet getPet(){
 		
 		return pet ;
 	}
+	/**
+	* Description: This method allows to see another class the BMI of the pet in case it is.
+	* pre: The macota is already created.
+	* @param : The name of the pet that the BMI wants to know about.
+	* @return The BMI in case the name of the pet coincides.
+	*/
 	public String peti(String name){
 		String ms = "";
 		if(name.equals(pet.getName())){
