@@ -12,7 +12,13 @@ public class Client{
 	
 	//Relaciones
 	private ArrayList<Pet> pets;
-	
+	/**
+	* Description: This is the constructor method.
+	* @param The name of the client.
+	* @param The client Id.
+	* @param The client address.
+	* @param The client phone.
+	*/
 	public Client(String theName, int theId, String theAddress, int thePhoneNumber){
 		name = theName;
 		id = theId;
@@ -20,49 +26,118 @@ public class Client{
 		phoneNumber = thePhoneNumber;
 		pets = new ArrayList<>();
 	}
-	//gets y sets
+	/**
+	* Description: This method allows knowing the name of client to another class.
+	* pre: The name of the client already exists. 
+	* @return The name of client.
+	*/
 	public String getName(){
 		return name;
 	}
+	/**
+	* Description: This method allows changing the name of the client through another class.
+	* pre: the name of the client already exists.
+	* @param : The name you want to client. 
+	*/
 	public void setName(String name){
 		this.name = name;
 	}
-	
+	/**
+	* Description: This method allows knowing the ID of client to another class .
+	* pre: The Id of the client already exists. 
+	* @return The ID of client.
+	*/
 	public int getId(){
 		return id;
 	}
+	/**
+	* Description: This method allows changing the ID of the client through another class.
+	* pre: the ID of the client already exists.
+	* @param : The ID you want to client. 
+	*/
 	public void setId(int id){
 		this.id = id;
 	}
-	
+	/**
+	* Description: This method allows knowing the address of client to another class.
+	* pre: The address of the client already exists. 
+	* @return The address of client.
+	*/
 	public String getAddress(){
 		return address;
 	}
+	/**
+	* Description: This method allows changing the address of the client through another class.
+	* pre: the address of the client already exists.
+	* @param : The address you want to client. 
+	*/
 	public void setAddress(String address){
 		this.address = address;
 	}
-	
+	/**
+	* Description: This method allows knowing the phone number of client to another class.
+	* pre: The phone number of the client already exists. 
+	* @return The phone number of client.
+	*/
 	public int getPhoneNumber(){
 		return phoneNumber;
 	}
+	/**
+	* Description: This method allows changing the phone number of the client through another class.
+	* pre: the phone number of the client already exists.
+	* @param : The phone number you want to client. 
+	*/
 	public void setPhoneNumber(int phoneNumber){
 		this.phoneNumber = phoneNumber;
 	}
+	/**
+	* Description: This method allows to see another class the pet arrangement that the client has
+	* pre: The pet arrangement that the client has been created.
+	* @return The pet arrangement that the client has.
+	*/
 	public ArrayList<Pet> getPets(){
 		return pets;
 	}
-	// metodos 
+	/**
+	* Description: This method allows add the new pet to the client's pet arrangement.
+	* pre: The pet arrangement that the client has been created.
+	* @param The name of the pet.
+	* @param The type of the pet.
+	* @param The age of the pet.
+	* @param The weight of the pet.
+	* @param The height of the pet. 
+	*/
 	public void addPet(String nameM, String type, int age, double weight, double height){
 		Pet pet = new Pet(nameM, type, age, weight, height);
 		pets.add(pet);
 	}
+	/**
+	* Description: This method allows to see another class the the number of pets a client has.
+	* pre: The pet arrangement that the client has been created.
+	* @return the number of pets a client has.
+	*/
 	public int petSize(){
 		return pets.size();
 	}
+	/**
+	* Description: This method allows to see another class access the pet in said position.
+	* pre: The pet arrangement that the client has been created.
+	* @param : The position in which the pet is found.
+	* @return The pet that is in that position.
+	*/
 	public Pet positionOfThePet(int i){
 		Pet pet = pets.get(i);
 		return pet;
 	}
+	/**
+	* Description: This method allows add a clinical history to a pet in a given position another class.
+	* pre: The pet arrangement that the client has been created.
+	* @param : The medical history of the pet.
+	* @param : The position in which the pet is found.
+	* @param : Current day.
+	* @param : Current month.
+	* @param : Current year.
+	*/
 	public void addHistory(ClinicHistory hist, int i, int day, int month, int year){
 		pets.get(i).historyAdd(hist, day, month, year);
 	}
